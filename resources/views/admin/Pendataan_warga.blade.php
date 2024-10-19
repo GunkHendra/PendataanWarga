@@ -38,46 +38,58 @@
         <div class="grid grid-cols-3 gap-4">
             <div>
                 <label for="Status">Status (Menikah/Belum Menikah)</label><br>
-                <select name="Status" id="Status" class="w-full bg-gray-200 rounded p-2">
-                    <option value="" disabled selected>Pilih</option>
-                    <option value="Menikah">Menikah</option>
-                    <option value="Belum Menikan">Belum Menikah</option>
-                </select><br>
+                <div class="relative">
+                    <select name="Status" id="Status" class="w-full bg-gray-200 rounded p-2 appearance-none">
+                        <option value="" disabled selected>Pilih</option>
+                        <option value="Menikah">Menikah</option>
+                        <option value="Belum Menikan">Belum Menikah</option>
+                    </select>
+                    <img src="assets/dashboard-icon/dropDown.png" alt="dropDownIcon" class="w-5 h-5 absolute right-2 top-3 pointer-events-none">
+                </div>
             </div>
 
             <div>
                 <label for="Pekerjaan">Jenis Pekerjaan</label><br>
-                <select name="Pekerjaan" id="Pekerjaan" class="w-full bg-gray-200 rounded p-2">
-                    <option value="" disabled selected>Pilih</option>
-                    <option value="Pekerjaan">Wiraswasta</option>
-                    <option value="Wirausaha">Wirausaha</option>
-                    <option value="PNS">PNS</option>
-                    <option value="Lainnya">Lainnya</option>
-                </select><br>
+                <div class="relative">
+                    <select name="Pekerjaan" id="Pekerjaan" class="appearance-none w-full bg-gray-200 border border-gray-300 rounded p-2">
+                        <option value="" disabled selected>Pilih</option>
+                        <option value="Wiraswasta">Wiraswasta</option>
+                        <option value="Wirausaha">Wirausaha</option>
+                        <option value="PNS">PNS</option>
+                        <option value="Lainnya">Lainnya</option>
+                    </select>
+                    <img src="assets/dashboard-icon/dropDown.png" alt="dropDownIcon" class="w-5 h-5 absolute right-2 top-3 pointer-events-none">
+                </div>
             </div>
 
             <div>
                 <label for="Agama">Agama</label><br>
-                <select name="Agama" id="Agama" class="w-full bg-gray-200 rounded p-2">
-                    <option value="" disabled selected>Pilih</option>
-                    <option value="Hindu">Hindu</option>
-                    <option value="Islam">Islam</option>
-                    <option value="Konghucu">Konghucu</option>
-                    <option value="Kristen">Kristen</option>
-                    <option value="Protestan">Protestan</option>
-                    <option value="Budhha">Buddha</option>
-                </select><br>
+                <div class="relative">
+                    <select name="Agama" id="Agama" class="w-full bg-gray-200 rounded p-2 appearance-none">
+                        <option value="" disabled selected>Pilih</option>
+                        <option value="Hindu">Hindu</option>
+                        <option value="Islam">Islam</option>
+                        <option value="Konghucu">Konghucu</option>
+                        <option value="Kristen">Kristen</option>
+                        <option value="Protestan">Protestan</option>
+                        <option value="Budhha">Buddha</option>
+                    </select>
+                    <img src="assets/dashboard-icon/dropDown.png" alt="dropDownIcon" class="w-5 h-5 absolute right-2 top-3 pointer-events-none">
+                </div>
             </div>
         </div>
 
         <div class="grid grid-cols-3 gap-4">
             <div>
                 <label for="Pendidikan">Pendidikan</label><br>
-                <select name="Pendidikan" id="Pendidikan" class="w-full bg-gray-200 rounded p-2">
-                    <option value="" disabled selected>Pilih</option>
-                    <option value="Sarjana/D4">Sarjana/D4</option>
-                    <option value="Lainnya">Lainnya</option>
-                </select><br>
+                <div class="relative">
+                    <select name="Pendidikan" id="Pendidikan" class="w-full bg-gray-200 rounded p-2 appearance-none">
+                        <option value="" disabled selected>Pilih</option>
+                        <option value="Sarjana/D4">Sarjana/D4</option>
+                        <option value="Lainnya">Lainnya</option>
+                    </select>
+                    <img src="assets/dashboard-icon/dropDown.png" alt="dropDownIcon" class="w-5 h-5 absolute right-2 top-3 pointer-events-none">
+                </div>
             </div>
             <div>
                 <label for="Sandi">Kata Sandi</label><br>

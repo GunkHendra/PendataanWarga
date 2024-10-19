@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="m-6">
-        <form class="space-y-4">
+        <form class="space-y-8">
             <div>
                 <label for="NIK">Nomor Induk Kependudukan</label><br>
                 <input type="text" id="NIK" name="NIK" placeholder="Ex 123456789" class="w-full bg-gray-200 rounded p-2">

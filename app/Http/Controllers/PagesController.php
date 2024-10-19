@@ -18,4 +18,10 @@ class PagesController extends Controller
             'title' => 'Pendataan Warga',
         ]);
     }
+
+    function PendataanIuran(){
+        return view('/admin/Pendataan_iuran_warga', [
+            'title' => 'Pendataan Iuran Warga',
+        ]);
+    }
 }

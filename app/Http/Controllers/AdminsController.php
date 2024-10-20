@@ -12,13 +12,13 @@ class AdminsController extends Controller
         ]);
     }
 
-    function PendataanWarga(){
+    function pendataan_warga(){
         return view('/admin/pendataan_warga', [
             'title' => 'Pendataan Warga',
         ]);
     }
 
-    function PendataanIuran(){
+    function pendataan_iuran(){
         return view('/admin/pendataan_iuran_warga', [
             'title' => 'Pendataan Iuran Warga',
         ]);

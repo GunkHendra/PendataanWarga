@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     function index(){
-        return redirect('/Admin');
+        return redirect('/admin');
     }
 }

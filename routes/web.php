@@ -8,10 +8,11 @@ use App\Http\Controllers\AdminsController;
 Route::get('/', [PagesController::class, 'index']);
 
 // Admin
-Route::get('/Admin', [AdminsController::class, 'index']);
-Route::get('/PendataanWarga', [AdminsController::class, 'PendataanWarga']);
-Route::get('/PendataanIuran', [AdminsController::class, 'PendataanIuran']);
+Route::get('/admin', [AdminsController::class, 'index']);
+Route::get('/pendataan_warga', [AdminsController::class, 'pendataan_warga']);
+Route::get('/pendataan_iuran', [AdminsController::class, 'pendataan_iuran']);
 
 
 // User
-Route::get('/User', [UsersController::class, 'index']);
+Route::get('/user', [UsersController::class, 'index']);
+Route::get('/riwayat_iuran', [UsersController::class, 'riwayat_iuran']);

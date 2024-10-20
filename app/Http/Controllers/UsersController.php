@@ -11,4 +11,10 @@ class UsersController extends Controller
             'title' => 'Dashboard',
         ]);
     }
+
+    function riwayat_iuran(){
+        return view('/user/riwayat_iuran', [
+            'title' => 'Riwayat Iuran',
+        ]);
+    }
 }

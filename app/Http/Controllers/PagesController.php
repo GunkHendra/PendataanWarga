@@ -8,20 +8,6 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     function index(){
-        return view('/admin/index', [
-            'title' => 'Dashboard',
-        ]);
-    }
-
-    function PendataanWarga(){
-        return view('/admin/Pendataan_warga', [
-            'title' => 'Pendataan Warga',
-        ]);
-    }
-
-    function PendataanIuran(){
-        return view('/admin/Pendataan_iuran_warga', [
-            'title' => 'Pendataan Iuran Warga',
-        ]);
+        return redirect('/Admin');
     }
 }

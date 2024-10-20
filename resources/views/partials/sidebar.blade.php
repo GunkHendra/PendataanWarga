@@ -5,12 +5,12 @@
         </div>
         <div>
             <h1 class="text-2xl font-bold">Username</h1>
-            <h2 class="text-xl">Admin Desa Lorem</h2>
+            <h2 class="text-xl">Role Desa Lorem</h2>
         </div>
     </div>
     <nav class="mt-4 basis-3/5">
-        <a href="#" class="flex flex-row py-2 px-4 text-gray-100 hover:bg-emerald-700 hover:text-white gap-2 items-center"><span><img class="w-12 h-12" src="/assets/dashboard-icon/home.png" alt="Home Icon"></span>Dashboard</a>
-        <a href="#" class="flex flex-row py-2 px-4 text-gray-100 hover:bg-emerald-700 hover:text-white gap-2 items-center"><span><img class="w-12 h-12" src="/assets/dashboard-icon/notepad.png" alt="Home Icon"></span>Data Warga Pendatang</a>
-        <a href="#" class="flex flex-row py-2 px-4 text-gray-100 hover:bg-emerald-700 hover:text-white gap-2 items-center"><span><img class="w-12 h-12" src="/assets/dashboard-icon/money.png" alt="Home Icon"></span>Data Iuran Warga</a>
+        <a href="/" class="flex flex-row py-2 px-4 text-gray-100 hover:bg-emerald-700 hover:text-white gap-2 items-center"><span><img class="w-12 h-12" src="/assets/dashboard-icon/home.png" alt="Home Icon"></span>Dashboard</a>
+        <a href="/" class="flex flex-row py-2 px-4 text-gray-100 hover:bg-emerald-700 hover:text-white gap-2 items-center"><span><img class="w-12 h-12" src="/assets/dashboard-icon/notepad.png" alt="Home Icon"></span>Data Warga Pendatang</a>
+        <a href="/" class="flex flex-row py-2 px-4 text-gray-100 hover:bg-emerald-700 hover:text-white gap-2 items-center"><span><img class="w-12 h-12" src="/assets/dashboard-icon/money.png" alt="Home Icon"></span>Data Iuran Warga</a>
     </nav>
 </nav>

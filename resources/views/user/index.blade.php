@@ -6,19 +6,19 @@
         <!-- NIK -->
         <div>
             <label for="nik" class="block text-gray-700">Nomor Induk Kependudukan</label>
-            <span class="block w-full p-2 border border-gray-300 rounded bg-gray-200">5104xxxxxxxx</span>
+            <span class="block w-full p-2 border border-gray-300 rounded bg-gray-200">3201010101230001</span>
         </div>
 
         <!-- Nama -->
         <div>
             <label for="name" class="block text-gray-700">Nama Lengkap</label>
-            <span class="block w-full p-2 border border-gray-300 rounded bg-gray-200">Putra Christian Sitorumorang</span>
+            <span class="block w-full p-2 border border-gray-300 rounded bg-gray-200">Budi Michael Santoso</span>
         </div>
 
         <!-- Alamat -->
         <div class="col-span-2">
             <label for="address" class="block text-gray-700">Alamat Sesuai KTP</label>
-            <span class="block w-full p-2 border border-gray-300 rounded bg-gray-200">Jalan Jalan Kaki</span>
+            <span class="block w-full p-2 border border-gray-300 rounded bg-gray-200">Jl. Sunset Road No. 20, Bali</span>
         </div>
 
         <!-- Status Menikah & Nomor Telepon -->
@@ -29,7 +29,7 @@
 
         <div>
             <label for="phone" class="block text-gray-700">Nomor Telepon</label>
-            <span class="block w-full p-2 border border-gray-300 rounded bg-gray-200">08133xxxxxx</span>
+            <span class="block w-full p-2 border border-gray-300 rounded bg-gray-200">081398765432</span>
         </div>
 
         <!-- Pendidikan & Jenis Pekerjaan -->
@@ -59,25 +59,25 @@
         <tbody>
             <tr>
                 <td class="px-4 py-2 text-center border-b border-gray-400">1</td>
-                <td class="px-4 py-2 text-center border-b border-gray-400">Aktif</td>
-                <td class="px-4 py-2 text-center border-b border-gray-400">03-05-2024</td>
                 <td class="px-4 py-2 text-center border-b border-gray-400">Rp1.000.000,00</td>
+                <td class="px-4 py-2 text-center border-b border-gray-400"><span class="px-4 py-2 bg-green-500 text-white rounded">Aktif</span></td>
+                <td class="px-4 py-2 text-center border-b border-gray-400">02-04-2024</td>
                 <td class="px-4 py-2 text-center border-b border-gray-400">
                 <div class="mt-2 mb-2">
-                        <span class="px-2 py-1 bg-red-500 text-white rounded">Belum Dibayar</span>
+                    <span class="px-4 py-2 bg-green-500 text-white rounded">Sudah Lunas</span>
                     </div>
                 </td>
             </tr>
         </tbody>
         <tbody>
             <tr>
-                <td class="px-4 py-2 text-center border-b border-gray-400">1</td>
-                <td class="px-4 py-2 text-center border-b border-gray-400">Aktif</td>
-                <td class="px-4 py-2 text-center border-b border-gray-400">02-05-2024</td>
+                <td class="px-4 py-2 text-center border-b border-gray-400">2</td>
                 <td class="px-4 py-2 text-center border-b border-gray-400">Rp1.000.000,00</td>
+                <td class="px-4 py-2 text-center border-b border-gray-400"><span class="px-4 py-2 bg-green-500 text-white rounded">Aktif</span></td>
+                <td class="px-4 py-2 text-center border-b border-gray-400">02-05-2024</td>
                 <td class="px-4 py-2 text-center border-b border-gray-400">
                 <div class="mt-2 mb-2">
-                    <span class="px-2 py-1 bg-green-500 text-white rounded">Sudah Lunas</span>
+                    <span class="px-4 py-2 bg-red-500 text-white rounded">Belum Dibayar</span>
                 </div>
                 </td>
             </tr>

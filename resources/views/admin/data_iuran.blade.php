@@ -28,29 +28,33 @@
 
 <div class="overflow-x-auto">
   <table class="min-w-full w-full mx-auto bg-white border border-gray-200">
-    <thead>
+    <thead class="bg-gray-100 text-black">
       <tr>
-        <th class="px-4 py-2 border-b border-gray-200 bg-white text-center text-sm font-bold text-black">NIK</th>
-        <th class="px-4 py-2 border-b border-gray-200 bg-white text-center text-sm font-bold text-black">Status Warga</th>
-        <th class="px-4 py-2 border-b border-gray-200 bg-white text-center text-sm font-bold text-black">Tanggal Iuran</th>
-        <th class="px-4 py-2 border-b border-gray-200 bg-white text-center text-sm font-bold text-black">Nominal Iuran</th>
-        <th class="px-4 py-2 border-b border-gray-200 bg-white text-center text-sm font-bold text-black">Status Iuran</th>
+        <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">NIK</th>
+        <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">Status Warga</th>
+        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Tanggal Iuran</th>
+        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Nominal Iuran</th>
+        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Status Iuran</th>
       </tr>
     </thead>
     <tbody>
     <tr>
-    <td class="px-4 py-2 text-center border-b border-gray-200">3201010101230001</td>
-    <td class="px-4 py-2 bg-green-500 rounded-xl text-center text-white border-b border-gray-200">Aktif</td>
-    <td class="px-4 py-2 text-center border-b border-gray-200">20-10-2024</td>
-    <td class="px-4 py-2 text-center border-b border-gray-200">Rp1.000.000,00</td>
-    <td class="px-4 py-2 bg-green-500 rounded-xl text-center text-white border-b border-gray-200">Lunas</td>
+    <td class="px-4 py-5 text-center border-b border-gray-200">3201010101230001</td>
+    <td class="px-4 py-5 text-center text-white border-b border-gray-200">
+      <span class="px-4 py-2 bg-green-500 text-white rounded">Aktif</span></td>
+    <td class="px-4 py-5 text-center border-b border-gray-200">20-10-2024</td>
+    <td class="px-4 py-5 text-center border-b border-gray-200">Rp1.000.000,00</td>
+    <td class="px-4 py-5 text-center text-white border-b border-gray-200">
+    <span class="px-4 py-2 bg-green-500 text-white rounded">Sudah Lunas</span></td>
 </tr>
 <tr>
-    <td class="px-4 py-2 text-center border-b border-gray-200">3201010101230002</td>
-    <td class="px-4 py-2 bg-green-500 rounded-xl text-center text-white border-b border-gray-200">Aktif</td>
-    <td class="px-4 py-2 text-center border-b border-gray-200">15-10-2024</td>
-    <td class="px-4 py-2 text-center border-b border-gray-200">Rp1.000.000,00</td>
-    <td class="px-4 py-2 bg-red-500 rounded-xl text-center text-white border-b border-gray-200">Belum Dibayar</td>
+    <td class="px-4 py-5 text-center border-b border-gray-200">3201010101230002</td>
+    <td class="px-4 py-5 text-center text-white border-b border-gray-200">
+      <span class="px-4 py-2 bg-green-500 text-white rounded">Aktif</span></td>
+    <td class="px-4 py-5 text-center border-b border-gray-200">15-10-2024</td>
+    <td class="px-4 py-5 text-center border-b border-gray-200">Rp1.000.000,00</td>
+    <td class="px-4 py-5 text-center text-white border-b border-gray-200">
+      <span class="px-4 py-2 bg-red-500 text-white rounded">Belum Dibayar</span></td>
 </tr>
 
     </tbody>

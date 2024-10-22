@@ -30,98 +30,39 @@
   <table class="min-w-full w-full mx-auto bg-white border border-gray-200">
     <thead class="bg-gray-100">
       <tr>
-        <th class="px-4 py-2 border-b border-gray-200 text-left text-sm font-bold text-black">NIK</th>
-        <th class="px-4 py-2 border-b border-gray-200 text-left text-sm font-bold text-black">Nama Lengkap</th>
-        <th class="px-4 py-2 border-b border-gray-200 text-left text-sm font-bold text-black">Alamat</th>
-        <th class="px-4 py-2 border-b border-gray-200 text-left text-sm font-bold text-black">Nomor Telp</th>
-        <th class="px-4 py-2 border-b border-gray-200 text-left text-sm font-bold text-black">Status Warga</th>
+        <th class="px-4 py-2 border-b border-gray-200 text-center text-sm font-bold text-black">NIK</th>
+        <th class="px-4 py-2 border-b border-gray-200 text-center text-sm font-bold text-black">Nama Lengkap</th>
+        <th class="px-4 py-2 border-b border-gray-200 text-center text-sm font-bold text-black">Alamat</th>
+        <th class="px-4 py-2 border-b border-gray-200 text-center text-sm font-bold text-black">Nomor Telp</th>
+        <th class="px-4 py-2 border-b border-gray-200 text-center text-sm font-bold text-black">Status Warga</th>
       </tr>
     </thead>
     <tbody>
     <tr>
-    <td class="px-4 py-2 text-left border-b border-gray-200">3201010101230001</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Budi Michael Santoso</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Jl. Sunset Road No. 20, Bali</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">0813-9876-5432</td>
-    <td class="px-4 py-2 bg-green-500 rounded-xl text-left text-white border-b border-gray-200">Aktif</td>
+    <td class="px-4 py-5 text-center border-b border-gray-200">3201010101230001</td>
+    <td class="px-4 py-5 text-center border-b border-gray-200">Budi Michael Santoso</td>
+    <td class="px-4 py-5 text-center border-b border-gray-200">Jl. Sunset Road No. 20, Bali</td>
+    <td class="px-4 py-5 text-center border-b border-gray-200">081398765432</td>
+    <td class="px-4 py-5 text-center text-white border-b border-gray-200">
+      <span class="px-4 py-2 bg-green-500 text-white rounded">Aktif</span></td>
 </tr>
 <tr>
-    <td class="px-4 py-2 text-left border-b border-gray-200">3201010101230002</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Kadek John Mahendra</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Jl. Pantai Kuta No. 45, Bali</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">0812-3456-7890</td>
-    <td class="px-4 py-2 bg-green-500 rounded-xl text-left text-white border-b border-gray-200">Aktif</td>
+    <td class="px-4 py-5 text-center border-b border-gray-200">3201010101230002</td>
+    <td class="px-4 py-5 text-center border-b border-gray-200">Kadek John Mahendra</td>
+    <td class="px-4 py-5 text-center border-b border-gray-200">Jl. Pantai Kuta No. 45, Bali</td>
+    <td class="px-4 py-5 text-center border-b border-gray-200">081234567890</td>
+    <td class="px-4 py-5 text-center text-white border-b border-gray-200">
+      <span class="px-4 py-2 bg-green-500 text-white rounded">Aktif</span></td>
 </tr>
 <tr>
-    <td class="px-4 py-2 text-left border-b border-gray-200">3201010101230003</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Ayu Jessica Pratami</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Jl. Sanur Raya No. 17, Bali</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">0813-4567-8901</td>
-    <td class="px-4 py-2 bg-red-500 rounded-xl text-left text-white border-b border-gray-200">Tidak Aktif</td>
+    <td class="px-4 py-5 text-center border-b border-gray-200">3201010101230003</td>
+    <td class="px-4 py-5 text-center border-b border-gray-200">Ayu Jessica Pratami</td>
+    <td class="px-4 py-5 text-center border-b border-gray-200">Jl. Sanur Raya No. 17, Bali</td>
+    <td class="px-4 py-5 text-center border-b border-gray-200">081345678901</td>
+    <td class="px-4 py-5 text-center text-white border-b border-gray-200">
+      <span class="px-4 py-2 bg-red-500 text-white rounded">Tidak Aktif</span></td>
 </tr>
-<tr>
-    <td class="px-4 py-2 text-left border-b border-gray-200">3201010101230004</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Nyoman Emily Wulandari</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Jl. Petitenget No. 88, Bali</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">0821-5678-1234</td>
-    <td class="px-4 py-2 bg-green-500 rounded-xl text-left text-white border-b border-gray-200">Aktif</td>
-</tr>
-<tr>
-    <td class="px-4 py-2 text-left border-b border-gray-200">3201010101230005</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Gede David Surya</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Jl. Uluwatu No. 12, Bali</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">0812-1234-5678</td>
-    <td class="px-4 py-2 bg-green-500 rounded-xl text-left text-white border-b border-gray-200">Aktif</td>
-</tr>
-<tr>
-    <td class="px-4 py-2 text-left border-b border-gray-200">3201010101230006</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Made Sarah Johnson</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Jl. Dewi Sri No. 8, Bali</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">0813-2345-6789</td>
-    <td class="px-4 py-2 bg-red-500 rounded-xl text-left text-white border-b border-gray-200">Tidak Aktif</td>
-</tr>
-<tr>
-    <td class="px-4 py-2 text-left border-b border-gray-200">3201010101230007</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Ketut Jennifer Smith</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Jl. Raya Legian No. 5, Bali</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">0819-8765-4321</td>
-    <td class="px-4 py-2 bg-green-500 rounded-xl text-left text-white border-b border-gray-200">Aktif</td>
-</tr>
-<tr>
-    <td class="px-4 py-2 text-left border-b border-gray-200">3201010101230008</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Wayan Michael Brown</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Jl. Tanjung Benoa No. 3, Bali</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">0821-9876-5432</td>
-    <td class="px-4 py-2 bg-green-500 rounded-xl text-left text-white border-b border-gray-200">Aktif</td>
-</tr>
-<tr>
-    <td class="px-4 py-2 text-left border-b border-gray-200">3201010101230009</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Putu Rachel Davis</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Jl. Seminyak No. 4, Bali</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">0813-5432-1987</td>
-    <td class="px-4 py-2 bg-red-500 rounded-xl text-left text-white border-b border-gray-200">Tidak Aktif</td>
-</tr>
-<tr>
-    <td class="px-4 py-2 text-left border-b border-gray-200">3201010101230010</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Gita Ethan Lee</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Jl. Nusa Dua No. 10, Bali</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">0812-6789-0123</td>
-    <td class="px-4 py-2 bg-green-500 rounded-xl text-left text-white border-b border-gray-200">Aktif</td>
-</tr>
-<tr>
-    <td class="px-4 py-2 text-left border-b border-gray-200">3201010101230011</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Kadek Ava Wilson</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Jl. Canggu No. 30, Bali</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">0821-3456-7890</td>
-    <td class="px-4 py-2 bg-red-500 rounded-xl text-left text-white border-b border-gray-200">Tidak Aktif</td>
-</tr>
-<tr>
-    <td class="px-4 py-2 text-left border-b border-gray-200">3201010101230012</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Dewa Lily Martin</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">Jl. Jembrana No. 15, Bali</td>
-    <td class="px-4 py-2 text-left border-b border-gray-200">0813-4321-0987</td>
-    <td class="px-4 py-2 bg-green-500 rounded-xl text-left text-white border-b border-gray-200">Aktif</td>
-</tr>
+
     </tbody>
   </table>
 </div>

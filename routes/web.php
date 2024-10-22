@@ -10,11 +10,13 @@ Route::get('/', [PagesController::class, 'index']);
 
 // Admin
 Route::get('/admin', [AdminsController::class, 'index']);
-Route::get('/pendataan_warga', [AdminsController::class, 'pendataan_warga']);
-Route::get('/pendataan_iuran', [AdminsController::class, 'pendataan_iuran']);
+Route::get('/admin/pendataan_warga', [AdminsController::class, 'pendataan_warga']);
+Route::get('/admin/pendataan_iuran', [AdminsController::class, 'pendataan_iuran']);
 
 
 // User
 Route::get('/user', [UsersController::class, 'index']);
-Route::get('/riwayat_iuran', [UsersController::class, 'riwayat_iuran']);
+Route::get('/user/riwayat_iuran', [UsersController::class, 'riwayat_iuran']);
+
+// Login
 Route::get('/login', [LoginController::class, 'index']);

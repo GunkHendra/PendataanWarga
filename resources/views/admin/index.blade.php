@@ -67,11 +67,12 @@
             <h2 class="text-xl font-bold text-black">Total Warga Belum Lunas</h2>
         </div>
     </div>
-</div>
-{{-- Illustrasi --}}
-{{-- <div class="col-span-3 bg-emerald-400 overflow-hidden rounded-lg shadow-lg border-2 border-black">
-    <div class="w-32 h-32 overflow-hidden">
-        <img src="/assets/dashboard-illustrasi/infinity-838683.webp" alt="Profile Picture">
+    
+    {{-- Illustrasi --}}
+    <div class="col-span-3 overflow-hidden rounded-lg shadow-lg border-2">
+        <div class="w-full h-full overflow-hidden">
+            <img src="/assets/dashboard-illustrasi/infinity-838683.webp" alt="Profile Picture">
+        </div>
     </div>
-</div> --}}
+</div>
 @endsection

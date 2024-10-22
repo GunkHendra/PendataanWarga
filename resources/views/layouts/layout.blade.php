@@ -11,7 +11,11 @@
     </head>
     <body class="bg-gray-100 font-poppins w-full h-full flex flex-row min-h-screen overflow-hidden">
         <div class="h-screen">
-            @include('partials/sidebar')
+            @if (request()->is('admin*'))
+                @include('partials/sidebar_admin')
+            @else
+                @include('partials/sidebar_user')
+            @endif
         </div>
         <div class="w-full">
             @include('partials/topbar')

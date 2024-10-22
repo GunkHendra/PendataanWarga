@@ -77,8 +77,8 @@
                 <td class="px-4 py-2 text-center border-b border-gray-400">Rp1.000.000,00</td>
                 <td class="px-4 py-2 text-center border-b border-gray-400">
                 <div class="mt-2 mb-2">
-                        <span class="px-2 py-1 bg-green-500 text-white rounded">Sudah Lunas</span>
-                    </div>
+                    <span class="px-2 py-1 bg-green-500 text-white rounded">Sudah Lunas</span>
+                </div>
                 </td>
             </tr>
         </tbody>

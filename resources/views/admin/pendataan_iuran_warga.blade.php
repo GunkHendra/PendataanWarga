@@ -7,7 +7,7 @@
                 <label for="NIK">Nomor Induk Kependudukan</label><br>
                 <div class="relative">
                     <input type="search" id="NIK" name="NIK" placeholder="Cari NIK" class="w-full border border-black bg-gray-200 rounded p-2 pr-10">
-                    <img src="assets/dashboard-icon/IconSearch.png" alt="searchIcon" class="w-10 h-10 right-2 absolute top-0.5">
+                    <img src="/assets/dashboard-icon/IconSearch.png" alt="searchIcon" class="w-10 h-10 right-2 absolute top-0.5">
                 </div>
             </div>
 

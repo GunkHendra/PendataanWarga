@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
         @vite('resources/css/app.css')
     </head>
-    <body class="bg-gray-100 font-poppins w-full h-full flex flex-row min-h-screen">
+    <body class="bg-gray-100 font-poppins w-full h-full flex flex-row min-h-screen overflow-hidden">
         <div class="h-screen">
             @include('partials/sidebar')
         </div>

@@ -19,7 +19,7 @@
         </div>
         <div class="w-full">
             @include('partials/topbar')
-            <div class="p-8">
+            <div class="p-6">
                 @yield('content')
             </div>
         </div>

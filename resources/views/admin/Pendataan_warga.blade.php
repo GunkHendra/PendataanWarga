@@ -1,7 +1,7 @@
 @extends('layouts/layout')
 
 @section('content')
-    <div class="m-6">
+    <div class="m-6 p-10 bg-white rounded-lg">
         <form class="space-y-8">
             <div>
                 <label for="NIK">Nomor Induk Kependudukan</label><br>
@@ -44,7 +44,7 @@
                         <option value="Menikah">Menikah</option>
                         <option value="Belum Menikan">Belum Menikah</option>
                     </select>
-                    <img src="assets/dashboard-icon/dropDown.png" alt="dropDownIcon" class="w-5 h-5 absolute right-2 top-3 pointer-events-none">
+                    <img src="/assets/dashboard-icon/dropDown.png" alt="dropDownIcon" class="w-5 h-5 absolute right-2 top-3 pointer-events-none">
                 </div>
             </div>
 
@@ -58,7 +58,7 @@
                         <option value="PNS">PNS</option>
                         <option value="Lainnya">Lainnya</option>
                     </select>
-                    <img src="assets/dashboard-icon/dropDown.png" alt="dropDownIcon" class="w-5 h-5 absolute right-2 top-3 pointer-events-none">
+                    <img src="/assets/dashboard-icon/dropDown.png" alt="dropDownIcon" class="w-5 h-5 absolute right-2 top-3 pointer-events-none">
                 </div>
             </div>
 
@@ -74,7 +74,7 @@
                         <option value="Protestan">Protestan</option>
                         <option value="Budhha">Buddha</option>
                     </select>
-                    <img src="assets/dashboard-icon/dropDown.png" alt="dropDownIcon" class="w-5 h-5 absolute right-2 top-3 pointer-events-none">
+                    <img src="/assets/dashboard-icon/dropDown.png" alt="dropDownIcon" class="w-5 h-5 absolute right-2 top-3 pointer-events-none">
                 </div>
             </div>
         </div>
@@ -88,7 +88,7 @@
                         <option value="Sarjana/D4">Sarjana/D4</option>
                         <option value="Lainnya">Lainnya</option>
                     </select>
-                    <img src="assets/dashboard-icon/dropDown.png" alt="dropDownIcon" class="w-5 h-5 absolute right-2 top-3 pointer-events-none">
+                    <img src="/assets/dashboard-icon/dropDown.png" alt="dropDownIcon" class="w-5 h-5 absolute right-2 top-3 pointer-events-none">
                 </div>
             </div>
             <div>

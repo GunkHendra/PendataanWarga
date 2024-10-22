@@ -1,7 +1,7 @@
 @extends('layouts/layout')
 
 @section('content')
-<div class="p-6">
+<div class="p-10 bg-white rounded-lg">
     <div class="grid grid-cols-2 gap-6">
         <!-- NIK -->
         <div>
@@ -46,12 +46,12 @@
 
     <!-- Riwayat Iuran Table -->
     <div class="overflow-x-auto">
-    <table class="table-auto w-full border border-collapse border-gray-400 mt-10">
+    <table class="table-auto w-full border border-collapse border-gray-400 mt-10 bg-white">
         <thead class="bg-gray-100">
             <tr>
                 <th class="px-4 py-4 text-center border-b border-gray-400">No</th>
-                <th class="px-4 py-4 text-center border-b border-gray-400">Status Warga</th>
                 <th class="px-4 py-2 text-center border-b border-gray-400">Nominal Iuran</th>
+                <th class="px-4 py-4 text-center border-b border-gray-400">Status Warga</th>
                 <th class="px-4 py-2 text-center border-b border-gray-400">Tanggal Iuran</th>
                 <th class="px-4 py-2 text-center border-b border-gray-400">Status Iuran</th>
             </tr>

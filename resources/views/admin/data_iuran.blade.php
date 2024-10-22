@@ -1,6 +1,7 @@
 @extends('layouts/layout')
 
 @section('content')
+<div class="p-10 bg-white rounded-lg">
 <div class="flex items-center justify-center w-full">
   <div class="relative w-full max-w-lg">
     <input
@@ -54,6 +55,7 @@
 
     </tbody>
   </table>
+</div>
 </div>
 
 

@@ -1,6 +1,7 @@
 @extends('layouts/layout')
 
 @section('content')
+<div class="p-10 bg-white rounded-lg">
 <div class="flex items-center justify-center w-full">
   <div class="relative w-full max-w-lg">
     <input
@@ -27,13 +28,13 @@
 
 <div class="overflow-x-auto">
   <table class="min-w-full w-full mx-auto bg-white border border-gray-200">
-    <thead>
+    <thead class="bg-gray-100">
       <tr>
-        <th class="px-4 py-2 border-b border-gray-200 bg-white text-left text-sm font-bold text-black">NIK</th>
-        <th class="px-4 py-2 border-b border-gray-200 bg-white text-left text-sm font-bold text-black">Nama Lengkap</th>
-        <th class="px-4 py-2 border-b border-gray-200 bg-white text-left text-sm font-bold text-black">Alamat</th>
-        <th class="px-4 py-2 border-b border-gray-200 bg-white text-left text-sm font-bold text-black">Nomor Telp</th>
-        <th class="px-4 py-2 border-b border-gray-200 bg-white text-left text-sm font-bold text-black">Status Warga</th>
+        <th class="px-4 py-2 border-b border-gray-200 text-left text-sm font-bold text-black">NIK</th>
+        <th class="px-4 py-2 border-b border-gray-200 text-left text-sm font-bold text-black">Nama Lengkap</th>
+        <th class="px-4 py-2 border-b border-gray-200 text-left text-sm font-bold text-black">Alamat</th>
+        <th class="px-4 py-2 border-b border-gray-200 text-left text-sm font-bold text-black">Nomor Telp</th>
+        <th class="px-4 py-2 border-b border-gray-200 text-left text-sm font-bold text-black">Status Warga</th>
       </tr>
     </thead>
     <tbody>
@@ -124,7 +125,7 @@
     </tbody>
   </table>
 </div>
-
+</div>
 
 
 

@@ -1,7 +1,7 @@
 @extends('layouts/layout')
 
 @section('content')
-    <div class="m-6">
+    <div class="m-6 p-10 bg-white rounded-lg">
         <form class="space-y-8">
             <div>
                 <label for="NIK">Nomor Induk Kependudukan</label><br>

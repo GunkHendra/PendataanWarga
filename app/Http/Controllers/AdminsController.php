@@ -23,4 +23,16 @@ class AdminsController extends Controller
             'title' => 'Pendataan Iuran Warga',
         ]);
     }
+
+    function data_iuran(){
+        return view('/admin/data_iuran', [
+            'title' => 'Data Iuran Warga',
+        ]);
+    }
+
+    function data_warga(){
+        return view('/admin/data_warga', [
+            'title' => 'Data Warga Pendatang',
+        ]);
+    }
 }

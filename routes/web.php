@@ -11,6 +11,8 @@ Route::get('/', [PagesController::class, 'index']);
 Route::get('/admin', [AdminsController::class, 'index']);
 Route::get('/pendataan_warga', [AdminsController::class, 'pendataan_warga']);
 Route::get('/pendataan_iuran', [AdminsController::class, 'pendataan_iuran']);
+Route::get('/datawarga', [AdminsController::class, 'data_warga']);
+Route::get('/dataiuran', [AdminsController::class, 'data_iuran']);
 
 
 // User

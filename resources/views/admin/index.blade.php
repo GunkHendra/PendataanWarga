@@ -69,10 +69,8 @@
     </div>
     
     {{-- Illustrasi --}}
-    <div class="col-span-3 overflow-hidden rounded-lg shadow-lg border-2">
-        <div class="w-full h-full overflow-hidden">
-            <img src="/assets/dashboard-illustrasi/infinity-838683.webp" alt="Profile Picture">
-        </div>
+    <div class="col-span-3 rounded-lg shadow-lg border-2 h-1/3">
+        <img src="/assets/dashboard-illustrasi/infinity-838683.webp" alt="Profile Picture" class="rounded-lg shadow-lg w-full h-full object-cover">
     </div>
 </div>
 @endsection

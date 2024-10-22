@@ -27,39 +27,39 @@
 <br>
 
 <div class="overflow-x-auto">
-  <table class="min-w-full w-full mx-auto bg-white border border-gray-200">
+  <table class="min-w-full w-full mx-auto bg-white border border-collapse border-gray-400">
     <thead class="bg-gray-100">
       <tr>
-        <th class="px-4 py-2 border-b border-gray-200 text-center text-sm font-bold text-black">NIK</th>
-        <th class="px-4 py-2 border-b border-gray-200 text-center text-sm font-bold text-black">Nama Lengkap</th>
-        <th class="px-4 py-2 border-b border-gray-200 text-center text-sm font-bold text-black">Alamat</th>
-        <th class="px-4 py-2 border-b border-gray-200 text-center text-sm font-bold text-black">Nomor Telp</th>
-        <th class="px-4 py-2 border-b border-gray-200 text-center text-sm font-bold text-black">Status Warga</th>
+        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">NIK</th>
+        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Nama Lengkap</th>
+        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Alamat</th>
+        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Nomor Telp</th>
+        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Status Warga</th>
       </tr>
     </thead>
     <tbody>
     <tr>
-    <td class="px-4 py-5 text-center border-b border-gray-200">3201010101230001</td>
-    <td class="px-4 py-5 text-center border-b border-gray-200">Budi Michael Santoso</td>
-    <td class="px-4 py-5 text-center border-b border-gray-200">Jl. Sunset Road No. 20, Bali</td>
-    <td class="px-4 py-5 text-center border-b border-gray-200">081398765432</td>
-    <td class="px-4 py-5 text-center text-white border-b border-gray-200">
+    <td class="px-4 py-5 text-center border-b border-gray-400">3201010101230001</td>
+    <td class="px-4 py-5 text-center border-b border-gray-400">Budi Michael Santoso</td>
+    <td class="px-4 py-5 text-center border-b border-gray-400">Jl. Sunset Road No. 20, Bali</td>
+    <td class="px-4 py-5 text-center border-b border-gray-400">081398765432</td>
+    <td class="px-4 py-5 text-center text-white border-b border-gray-400">
       <span class="px-4 py-2 bg-green-500 text-white rounded">Aktif</span></td>
 </tr>
 <tr>
-    <td class="px-4 py-5 text-center border-b border-gray-200">3201010101230002</td>
-    <td class="px-4 py-5 text-center border-b border-gray-200">Kadek John Mahendra</td>
-    <td class="px-4 py-5 text-center border-b border-gray-200">Jl. Pantai Kuta No. 45, Bali</td>
-    <td class="px-4 py-5 text-center border-b border-gray-200">081234567890</td>
-    <td class="px-4 py-5 text-center text-white border-b border-gray-200">
+    <td class="px-4 py-5 text-center border-b border-gray-400">3201010101230002</td>
+    <td class="px-4 py-5 text-center border-b border-gray-400">Kadek John Mahendra</td>
+    <td class="px-4 py-5 text-center border-b border-gray-400">Jl. Pantai Kuta No. 45, Bali</td>
+    <td class="px-4 py-5 text-center border-b border-gray-400">081234567890</td>
+    <td class="px-4 py-5 text-center text-white border-b border-gray-400">
       <span class="px-4 py-2 bg-green-500 text-white rounded">Aktif</span></td>
 </tr>
 <tr>
-    <td class="px-4 py-5 text-center border-b border-gray-200">3201010101230003</td>
-    <td class="px-4 py-5 text-center border-b border-gray-200">Ayu Jessica Pratami</td>
-    <td class="px-4 py-5 text-center border-b border-gray-200">Jl. Sanur Raya No. 17, Bali</td>
-    <td class="px-4 py-5 text-center border-b border-gray-200">081345678901</td>
-    <td class="px-4 py-5 text-center text-white border-b border-gray-200">
+    <td class="px-4 py-5 text-center border-b border-gray-400">3201010101230003</td>
+    <td class="px-4 py-5 text-center border-b border-gray-400">Ayu Jessica Pratami</td>
+    <td class="px-4 py-5 text-center border-b border-gray-400">Jl. Sanur Raya No. 17, Bali</td>
+    <td class="px-4 py-5 text-center border-b border-gray-400">081345678901</td>
+    <td class="px-4 py-5 text-center text-white border-b border-gray-400">
       <span class="px-4 py-2 bg-red-500 text-white rounded">Tidak Aktif</span></td>
 </tr>
 

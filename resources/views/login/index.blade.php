@@ -11,7 +11,7 @@
     </head>
     <body class="bg-white font-poppins w-full h-full flex min-h-screen">
         <div class="bg-emerald-400 basis-1/2 flex justify-center items-center">
-            <img src="/assets/dashboard-illustrasi/Asset 1.png" alt="Illustrasi">
+            <img src="/assets/dashboard-illustrasi/Asset 1.png" alt="Illustrasi" class="w-1/2 h-1/2">
         </div>
         <div class="basis-1/2 flex flex-col space-y-4 items-center justify-center">
             @if (session()->has('success'))

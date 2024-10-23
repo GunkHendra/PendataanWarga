@@ -42,7 +42,7 @@
         </div>
         <div>
             <h2 class="text-3xl font-bold text-white">+3</h2>
-            <h2 class="text-2xl font-bold text-black">Total Pendatang Bulan Ini</h2>
+            <h2 class="text-xl font-bold text-black">Total Pendatang Bulan Ini</h2>
         </div>
     </div>
 

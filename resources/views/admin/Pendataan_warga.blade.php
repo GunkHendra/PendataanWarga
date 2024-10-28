@@ -5,7 +5,7 @@
         <form class="space-y-8">
             <div>
                 <label for="NIK">Nomor Induk Kependudukan</label><br>
-                <input type="text" id="NIK" name="NIK" placeholder="Ex 123456789" class="w-full bg-gray-200 rounded p-2">
+                <input type="text" id="NIK" name="NIK" placeholder="Ex. 123456789" class="w-full bg-gray-200 rounded p-2">
             </div>
 
             <div>

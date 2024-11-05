@@ -67,7 +67,7 @@
             <img src="https://via.placeholder.com/150" alt="Profile Picture" class="w-full h-full object-cover">
         </div>
         <div>
-            <h2 class="text-3xl font-bold text-white">- Rp. 2.000.000</h2>
+            <h2 class="text-3xl font-bold text-white">- Rp. {{ $total_payment_belum }}</h2>
             <h2 class="text-xl font-bold text-black">Total Iuran Belum Lunas</h2>
         </div>
     </div>
@@ -81,7 +81,7 @@
             <img src="https://via.placeholder.com/150" alt="Profile Picture" class="w-full h-full object-cover">
         </div>
         <div>
-            <h2 class="text-3xl font-bold text-white">20</h2>
+            <h2 class="text-3xl font-bold text-white">{{ $total_warga_belum }}</h2>
             <h2 class="text-xl font-bold text-black">Total Warga Belum Lunas</h2>
         </div>
     </div>

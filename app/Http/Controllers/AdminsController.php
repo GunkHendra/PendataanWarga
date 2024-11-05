@@ -18,10 +18,12 @@ class AdminsController extends Controller
         return view('/admin/index', [
             'title' => 'Dashboard',
             'month' => Carbon::now()->format('F'),
-            'total_warga' => User::where('status_warga', '1')->count(),
+            'total_warga' => User::where('status_warga', '1')->where('is_admin', '0')->count(),
             'total_payment' => Payment::where('status_iuran', '1')->whereBetween('tanggal_iuran', [$startOfMonth, $endOfMonth])->sum('nominal_iuran'),
             'total_warga_lunas' => Payment::where('status_iuran', '1')->whereBetween('tanggal_iuran', [$startOfMonth, $endOfMonth])->count(),
-            'total_warga_datang' => User::where('status_warga', '1')->whereBetween('created_at', [$startOfMonth, $endOfMonth])->count(),
+            'total_warga_datang' => User::where('status_warga', '1')->where('is_admin', '0')->whereBetween('created_at', [$startOfMonth, $endOfMonth])->count(),
+            'total_payment_belum' => Payment::where('status_iuran', '0')->whereBetween('tanggal_iuran', [$startOfMonth, $endOfMonth])->sum('nominal_iuran'),
+            'total_warga_belum' => Payment::where('status_iuran', '0')->whereBetween('tanggal_iuran', [$startOfMonth, $endOfMonth])->count(),
         ]);
     }
 

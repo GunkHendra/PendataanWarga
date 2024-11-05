@@ -10,7 +10,7 @@
         @vite('resources/css/app.css')
     </head>
     <body class="bg-gray-100 font-poppins w-full h-full flex flex-row min-h-screen overflow-hidden">
-        <div class="h-screen">
+        <div class="h-screen sticky">
             @if (request()->is('admin*'))
                 @include('partials/sidebar_admin')
             @else

@@ -28,11 +28,11 @@
             <form action="/login" method="POST">
               @csrf
               <div class="mb-4">
-                <input name="nik" type="text" id="nik" class="w-full py-2 border-b-2 border-emerald-400 focus:outline-none" placeholder="Nomor Induk Kependudukan" required>
+                <input name="NIK" type="text" id="nik" class="w-full py-2 border-b-2 border-emerald-400 focus:outline-none" placeholder="Nomor Induk Kependudukan" required>
                 @error('nik')
                     <small class="text-red-400">{{ $message }}</small>
                 @enderror
-                    </div>
+              </div>
               <div class="mb-6">
                 <input name="password" type="password" id="password" class="w-full py-2 border-b-2 border-emerald-400 focus:outline-none" placeholder="Password" required>
                 @error('password')
@@ -40,9 +40,6 @@
                 @enderror
             </div>
             <input type="submit" class="w-full bg-emerald-400 hover:bg-emerald-500 text-white font-semibold py-2 px-4 rounded-lg" value="Login"></input>
-            <div class="flex justify-end">
-                <a href="/lupa_sandi" class="text-blue-500">Lupa kata sandi?</a>
-            </div>
             </form>
           </div>
         </div>

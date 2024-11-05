@@ -11,5 +11,10 @@
     <nav class="mt-4 basis-3/5">
         <a href="/user" class="flex flex-row py-2 px-4 text-gray-100 hover:bg-emerald-700 hover:text-white gap-2 items-center"><span><img class="w-12 h-12" src="/assets/dashboard-icon/home.png" alt="Home Icon"></span>Dashboard</a>
         <a href="/user/riwayat_iuran" class="flex flex-row py-2 px-4 text-gray-100 hover:bg-emerald-700 hover:text-white gap-2 items-center"><span><img class="w-12 h-12" src="/assets/dashboard-icon/notepad.png" alt="Home Icon"></span>Riwayat Iuran</a>
+        <form method="POST" action="/logout" class="flex flex-row py-2 px-4 bg-red-500 text-gray-100 hover:bg-red-700 hover:text-white gap-2 items-center">
+            @csrf
+            <img class="w-12 h-12" src="/assets/dashboard-icon/notepad.png" alt="Home Icon">
+            <button type="submit">Logout</button>
+        </form>
     </nav>
 </nav>

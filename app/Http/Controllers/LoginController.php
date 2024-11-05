@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 
 class LoginController extends Controller
 {
@@ -15,18 +18,22 @@ class LoginController extends Controller
     public function authenticate(Request $request): RedirectResponse
     {
         $credentials = $request->validate([
-            'email' => ['required'],
+            'NIK' => ['required'],
             'password' => ['required'],
         ]);
  
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/user');
+            if (Auth::user()->is_admin){
+                return redirect()->intended('/admin');
+            } else{
+                return redirect()->intended('/user');
+            }
         }
  
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+            'NIK' => 'The provided credentials do not match our records.',
+        ])->onlyInput('NIK');
     }
 
     public function logout(Request $request): RedirectResponse
@@ -37,6 +44,6 @@ class LoginController extends Controller
     
         $request->session()->regenerateToken();
     
-        return redirect('/');
+        return redirect('/login');
     }
 }

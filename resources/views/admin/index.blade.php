@@ -7,8 +7,8 @@
         <div class="absolute top-0 right-0 bg-emerald-600 text-white p-2 rounded-bl-lg">
             Keseluruhan
         </div>
-        <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-gray-300">
-            <img src="https://via.placeholder.com/150" alt="Profile Picture" class="w-full h-full object-cover">
+        <div class="w-24 h-24 rounded-full overflow-hidden">
+            <img src="/assets/dashboard-icon/person.png" alt="Profile Picture" class="w-full h-full object-cover">
         </div>
         <div>
             <h2 class="text-3xl font-bold text-white">{{ $total_warga }}</h2>
@@ -21,8 +21,8 @@
         <div class="absolute top-0 right-0 bg-emerald-800 text-white p-2 rounded-bl-lg">
             {{ $month }}
         </div>
-        <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-gray-300">
-            <img src="https://via.placeholder.com/150" alt="Profile Picture" class="w-full h-full object-cover">
+        <div class="w-20 h-20 overflow-hidden">
+            <img src="/assets/dashboard-icon/notepad-dashboard.png" alt="Profile Picture" class="w-full h-full object-cover">
         </div>
         <div>
             <h2 class="text-3xl font-bold text-white">+ Rp. {{ $total_payment }}</h2>
@@ -35,8 +35,8 @@
         <div class="absolute top-0 right-0 bg-emerald-800 text-white p-2 rounded-bl-lg">
             {{ $month }}
         </div>
-        <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-gray-300 col-start-2">
-            <img src="https://via.placeholder.com/150" alt="Profile Picture" class="w-full h-full object-cover">
+        <div class="w-24 h-24 overflow-hidden col-start-2">
+            <img src="/assets/dashboard-icon/money-dashboard.png" alt="Profile Picture" class="w-full h-full object-cover">
         </div>
         <div>
             <h2 class="text-3xl font-bold text-white">{{ $total_warga_lunas }}</h2>
@@ -49,8 +49,8 @@
         <div class="absolute top-0 right-0 bg-emerald-800 text-white p-2 rounded-bl-lg">
             {{ $month }}
         </div>
-        <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-gray-300">
-            <img src="https://via.placeholder.com/150" alt="Profile Picture" class="w-full h-full object-cover">
+        <div class="w-24 h-24 overflow-hidden">
+            <img src="/assets/dashboard-icon/person-plus.png" alt="Profile Picture" class="w-full h-full">
         </div>
         <div>
             <h2 class="text-3xl font-bold text-white">+{{ $total_warga_datang }}</h2>
@@ -63,8 +63,8 @@
         <div class="absolute top-0 right-0 bg-emerald-800 text-white p-2 rounded-bl-lg">
             {{ $month }}
         </div>
-        <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-gray-300">
-            <img src="https://via.placeholder.com/150" alt="Profile Picture" class="w-full h-full object-cover">
+        <div class="w-24 h-24 overflow-hidden">
+            <img src="/assets/dashboard-icon/money-wings.png" alt="Profile Picture" class="w-full h-full">
         </div>
         <div>
             <h2 class="text-3xl font-bold text-white">- Rp. {{ $total_payment_belum }}</h2>
@@ -77,8 +77,8 @@
         <div class="absolute top-0 right-0 bg-emerald-800 text-white p-2 rounded-bl-lg">
             {{ $month }}
         </div>
-        <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-gray-300">
-            <img src="https://via.placeholder.com/150" alt="Profile Picture" class="w-full h-full object-cover">
+        <div class="w-24 h-24 overflow-hidden">
+            <img src="/assets/dashboard-icon/unpaid.png" alt="Profile Picture" class="w-full h-full object-cover">
         </div>
         <div>
             <h2 class="text-3xl font-bold text-white">{{ $total_warga_belum }}</h2>

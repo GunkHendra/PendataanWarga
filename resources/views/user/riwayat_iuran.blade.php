@@ -54,5 +54,8 @@
             @endif
         </tbody>
     </table>
+<div class="mt-4">
+    {{ $payments->links('pagination::tailwind') }}
+    </div>
 </div>
 @endsection

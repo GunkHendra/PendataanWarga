@@ -24,8 +24,11 @@
         <!-- Status Menikah & Nomor Telepon -->
         <div>
             <label for="status" class="block text-gray-700">Status (Menikah/Belum Menikah)</label>
-            <span class="block w-full p-2 border border-gray-300 rounded bg-gray-200">{{ $user->status_menikah }}</span>
+            <span class="block w-full p-2 border border-gray-300 rounded bg-gray-200">
+                {{ $user->status_menikah ? 'Menikah' : 'Belum Menikah' }}
+            </span>
         </div>
+
 
         <div>
             <label for="phone" class="block text-gray-700">Nomor Telepon</label>
@@ -46,59 +49,60 @@
 
     <!-- Riwayat Iuran Table -->
     <div class="overflow-x-auto">
-    <table class="table-auto w-full border border-collapse border-gray-400 mt-10 bg-white">
-        <thead class="bg-gray-100">
-            @if (!$payment->first() === null)
-            <tr>
-                <th class="px-4 py-4 text-center border-b border-gray-400">No</th>
-                <th class="px-4 py-2 text-center border-b border-gray-400">Nominal Iuran</th>
-                <th class="px-4 py-4 text-center border-b border-gray-400">Status Warga</th>
-                <th class="px-4 py-2 text-center border-b border-gray-400">Tanggal Iuran</th>
-                <th class="px-4 py-2 text-center border-b border-gray-400">Status Iuran</th>
-            </tr>
-            @endif
-        </thead>
-        <tbody>
-            @if ($payment->first() === null)
-            <tr class="flex justify-center">
-                <td class="px-2 py-4">
-                    Anda masih belum memiliki data iuran.    
-                </td>
-            </tr>
-            @else
-            <tr>
-                <td class="px-4 py-2 text-center border-b border-gray-400">1</td>
-                <td class="px-4 py-2 text-center border-b border-gray-400">{{ $payment[0]->nominal_iuran }}</td>
-                {{-- {{ dd($payment) }} --}}
-                <td class="px-4 py-2 text-center border-b border-gray-400">
-                    @if ($payment[0]->user->status_warga)
-                    <span class="px-4 py-2 bg-green-500 text-white rounded">
-                        Aktif
-                    </span>
-                    @else
-                    <span class="px-4 py-2 bg-red-500 text-white rounded">
-                        Tidak Aktif
-                    </span>
-                    @endif    
-                </td>
-                <td class="px-4 py-2 text-center border-b border-gray-400">{{ $payment[0]->tanggal_iuran }}</td>
-                <td class="px-4 py-2 text-center border-b border-gray-400">
-                <div class="mt-2 mb-2">
-                    @if ($payment[0]->status_iuran)
-                    <span class="px-4 py-2 bg-green-500 text-white rounded">
-                        Lunas
-                    </span>
-                    @else
-                    <span class="px-4 py-2 bg-red-500 text-white rounded">
-                        Belum Lunas
-                    </span>
-                    @endif  
-                </div>
-                </td>
-            </tr>
-            @endif
-        </tbody>
-    </table>
+        <table class="table-auto w-full border border-collapse border-gray-400 mt-10 bg-white">
+            <thead class="bg-gray-100">
+                @if (!$payment->isEmpty())
+                <tr>
+                    <th class="px-4 py-4 text-center border-b border-gray-400">No</th>
+                    <th class="px-4 py-2 text-center border-b border-gray-400">Nominal Iuran</th>
+                    <th class="px-4 py-4 text-center border-b border-gray-400">Status Warga</th>
+                    <th class="px-4 py-2 text-center border-b border-gray-400">Tanggal Iuran</th>
+                    <th class="px-4 py-2 text-center border-b border-gray-400">Status Iuran</th>
+                </tr>
+                @endif
+            </thead>
+            <tbody>
+                @if ($payment->first() === null)
+                <tr class="flex justify-center">
+                    <td class="px-2 py-4">
+                        Anda masih belum memiliki data iuran.
+                    </td>
+                </tr>
+                @else
+                <tr>
+                    <td class="px-4 py-2 text-center border-b border-gray-400">1</td>
+                    <td class="px-4 py-2 text-center border-b border-gray-400">{{ $payment[0]->nominal_iuran }}</td>
+                    {{-- {{ dd($payment) }} --}}
+                    <td class="px-4 py-2 text-center border-b border-gray-400">
+                        @if ($payment[0]->user->status_warga)
+                        <span class="px-4 py-2 bg-green-500 text-white rounded">
+                            Aktif
+                        </span>
+                        @else
+                        <span class="px-4 py-2 bg-red-500 text-white rounded">
+                            Tidak Aktif
+                        </span>
+                        @endif
+                    </td>
+                    <td class="px-4 py-2 text-center border-b border-gray-400">{{ $payment[0]->tanggal_iuran }}</td>
+                    <td class="px-4 py-2 text-center border-b border-gray-400">
+                    <div class="mt-2 mb-2">
+                        @if ($payment[0]->status_iuran)
+                        <span class="px-4 py-2 bg-green-500 text-white rounded">
+                            Lunas
+                        </span>
+                        @else
+                        <span class="px-4 py-2 bg-red-500 text-white rounded">
+                            Belum Lunas
+                        </span>
+                        @endif
+                    </div>
+                    </td>
+                </tr>
+                @endif
+            </tbody>
+        </table>
+    </div>
 </div>
 
 @endsection

@@ -19,7 +19,7 @@
                 {{ session('success') }}
               </div>
             @endif
-        
+
           <div class="w-full max-w-sm space-y-8">
             <div class="flex flex-col justify-center items-center space-y-3">
                 <img class="h-32 w-32 border-4 border-emerald-400 rounded-full" src="/assets/dashboard-illustrasi/profil.jpg" alt="">

@@ -22,7 +22,7 @@
                     <label for="Alamat">Alamat Sesuai KTP</label><br>
                     <input type="text" id="alamat" name="alamat" placeholder="Ex. Jalan Gedung Kiri No. 2" class="w-full bg-gray-200 rounded p-2" value="{{ old('alamat') }}" required>
                 </div>
-    
+
                 <div class="mb-6">
                     <label for="nomor">Nomor Telepon</label><br>
                     <input type="number" id="nomor_telepon" name="nomor_telepon" placeholder="Ex. 0812345678" class="w-full bg-gray-200 rounded p-2" value="{{ old('nomor_telepon') }}" required>

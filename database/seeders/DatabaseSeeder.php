@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use Carbon\Carbon;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
+use App\Models\Year;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -35,6 +37,10 @@ class DatabaseSeeder extends Seeder
             'password' => '1',
             'status_warga' => '1',
             'remember_token' => NULL,
+        ]);
+
+        Year::create([
+            'tahun' => Carbon::now()->year,
         ]);
     }
 }

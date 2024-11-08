@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('tanggal_iuran');
             $table->string('nominal_iuran');
             $table->boolean('status_iuran')->default(false);
+            $table->boolean('isActive')->default(true);
             $table->timestamps();
         });
     }

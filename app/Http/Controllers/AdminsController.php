@@ -41,10 +41,11 @@ class AdminsController extends Controller
     }
 
     function data_iuran(){
-        $payment = Payment::orderBy('tanggal_iuran', 'desc');
+        // $payment = Payment::join('users', 'payments.user_id', '=', 'users.id')->where('isActive', '1')->orderBy('tanggal_iuran', 'desc');
+        $payment = Payment::where('isActive', '1')->orderBy('tanggal_iuran', 'desc');
 
         if (request('search')){
-            $payment->where('NIK', 'like', '%' . request('search') . '%');
+            $payment->where('NIK', 'like', '%' . request('search') . '%')->orWhere('nama_lengkap', 'like', '%' . request('search') . '%');
         }
 
         return view('/admin/data_iuran', [
@@ -71,8 +72,37 @@ class AdminsController extends Controller
         $validated = $request->validate([
             'id' => ['required'],
             'status_iuran' => ['required'],
+            'status_warga' => ['required'],
         ]);
-        Payment::where('id', $validated['id'])->update(['status_iuran' => $validated['status_iuran']]);
+        if ($validated['status_warga']){
+            Payment::where('id', $validated['id'])->update(['status_iuran' => $validated['status_iuran']]);
+        } else{
+            Payment::where('id', $validated['id'])->update(['status_iuran' => $validated['status_iuran'], 'isActive' => '0']);
+        }
         return redirect('/admin/data_iuran')->with('success', 'Update data berhasil!');
+    }
+
+    public function update_warga(Request $request){
+        $validated = $request->validate([
+            'id' => ['required'],
+            'status_warga' => ['required'],
+        ]);
+        User::where('id', $validated['id'])->update(['status_warga' => $validated['status_warga']]);
+
+        if (!$validated['status_warga']){
+            Payment::where('user_id', $validated['id'])->where('isActive', '1')->where('status_iuran', '0')->update(['isActive' => '0']);
+        }
+        else if ($validated['status_warga']){
+            $currentMonthStart = Carbon::now()->startOfMonth();
+            Payment::where('user_id', $validated['id'])->where('isActive', '0')->where('status_iuran', '0')->where('tanggal_iuran', '>=', $currentMonthStart)->update(['isActive' => '1']);
+        }
+        // $payments = Payment::where('user_id', $validated['id']);
+        // foreach ($payments as $payment){
+        //     if (!$payment->status_iuran){
+        //         Payment::where('id', $payment->id)->update(['isActive' => '0']);
+        //     }
+        // }
+
+        return redirect('/admin/data_warga')->with('success', 'Update data berhasil!');
     }
 }

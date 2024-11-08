@@ -1,6 +1,28 @@
 @extends('layouts/layout')
 
 @section('content')
+<div id="terimaModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10 hidden">
+  <div class="bg-white p-6 rounded-lg shadow-lg">
+      <h2 class="text-xl font-semibold mb-4">Aktifkan Status Warga</h2>
+      <p>Apakah Anda yakin untuk mengaktifkan status warga ini?</p>
+      <div class="mt-6 flex justify-end gap-4">
+          <button id="cancelTerima" class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded">Tidak</button>
+          <button id="confirmTerima" class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded">Iya</button>
+      </div>
+  </div>
+</div>
+
+<div id="batalModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10 hidden">
+  <div class="bg-white p-6 rounded-lg shadow-lg">
+      <h2 class="text-xl font-semibold mb-4">Nonaktifkan Warga</h2>
+      <p>Apakah Anda yakin untuk menonaktifkan status warga ini?</p>
+      <div class="mt-6 flex justify-end gap-4">
+          <button id="cancelBatal" class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded">Tidak</button>
+          <button id="confirmBatal" class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded">Iya</button>
+      </div>
+  </div>
+</div>
+
 <div class="p-10 bg-white rounded-lg">
   <div class="flex items-center justify-center w-full">
     <div class="w-full max-w-lg">
@@ -37,6 +59,7 @@
           <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Alamat</th>
           <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Nomor Telp</th>
           <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Status Warga</th>
+          <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Aksi</th>
         </tr>
       </thead>
       <tbody>
@@ -57,6 +80,22 @@
           </span>
           @endif
         </td>
+        <td class="py-5 text-center border-b border-gray-400">
+          <form class="flex justify-center" id="confirmForm-{{ $user->id }}" action="/admin/update_warga" method="POST">
+            @csrf
+            @if (!$user->status_warga)
+            <button class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700" onclick="konfirmasi(event, '{{ $user->id }}', 1)">
+              Aktifkan
+            </button>
+            @else
+            <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700" onclick="konfirmasi(event, '{{ $user->id }}', 0)">
+              Nonaktifkan
+            </button>
+            @endif
+            <input type="hidden" name="id" id="id-{{ $user->id }}">
+            <input type="hidden" name="status_warga" id="status-{{ $user->id }}">
+          </form>
+        </td>
       </tr>
       @endforeach
 
@@ -69,4 +108,38 @@
 
   </div>
 </div>
+
+<script>
+  let id, status;
+  function konfirmasi(event, idValue, statusValue){
+    event.preventDefault();
+    if (statusValue == 1){
+      document.getElementById('terimaModal').classList.remove('hidden');
+    } else if (statusValue == 0){
+      document.getElementById('batalModal').classList.remove('hidden');
+    }
+    id = idValue;
+    status = statusValue;
+  }
+  
+  document.getElementById('confirmTerima').addEventListener('click', function(){
+    document.getElementById('id-' + id).value = id;
+    document.getElementById('status-' + id).value = status;
+    document.getElementById('confirmForm-' + id).submit();
+  });
+
+  document.getElementById('confirmBatal').addEventListener('click', function(){
+    document.getElementById('id-' + id).value = id;
+    document.getElementById('status-' + id).value = status;
+    document.getElementById('confirmForm-' + id).submit();
+  });
+    
+  document.getElementById('cancelTerima').addEventListener('click', function () {
+      document.getElementById('terimaModal').classList.add('hidden');
+  });
+
+  document.getElementById('cancelBatal').addEventListener('click', function () {
+      document.getElementById('batalModal').classList.add('hidden');
+  });
+</script>
 @endsection

@@ -6,7 +6,7 @@
             @csrf
             <div class="mb-6">
                 <label for="NIK">Nomor Induk Kependudukan</label><br>
-                <input type="text" id="NIK" name="NIK" placeholder="Ex. 123456789" class="w-full bg-gray-200 rounded p-2" required>
+                <input type="number" id="NIK" name="NIK" placeholder="Ex. 123456789" class="w-full bg-gray-200 rounded p-2" required>
                 @error('NIK')
                     <small class="text-red-400">{{ $message }}</small>
                 @enderror
@@ -25,7 +25,7 @@
     
                 <div class="mb-6">
                     <label for="nomor">Nomor Telepon</label><br>
-                    <input type="text" id="nomor_telepon" name="nomor_telepon" placeholder="Ex. 0812345678" class="w-full bg-gray-200 rounded p-2" value="{{ old('nomor_telepon') }}" required>
+                    <input type="number" id="nomor_telepon" name="nomor_telepon" placeholder="Ex. 0812345678" class="w-full bg-gray-200 rounded p-2" value="{{ old('nomor_telepon') }}" required>
                 </div>
             </div>
 
@@ -104,7 +104,7 @@
 
             <div>
                 <label for="nominal_iuran">Nominal Iuran</label><br>
-                <input type="text" id="nominal_iuran" name="nominal_iuran" placeholder="Ex. 10.000.000,00" class="w-full bg-gray-200 rounded p-2" value="{{ old('nominal_iuran') }}">
+                <input type="number" id="nominal_iuran" name="nominal_iuran" placeholder="Ex. 10000000" class="w-full bg-gray-200 rounded p-2" value="{{ old('nominal_iuran') }}">
             </div>
 
             <div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Desa;
 use App\Models\User;
 use App\Models\Year;
 use App\Models\Payment;
@@ -15,10 +16,10 @@ class LoginController extends Controller
 {
     public function index(){
         $currentYear = Carbon::now()->year;
-        $databaseYear = Year::first();
+        $databaseYear = Desa::first();
 
         if ($databaseYear->tahun != $currentYear){
-            Year::where('tahun', $databaseYear->tahun)->update(['tahun' => $currentYear]);
+            Desa::where('tahun', $databaseYear->tahun)->update(['tahun' => $currentYear]);
             $users = User::where('status_warga', 1)->where('is_admin', 0)->get();
 
             foreach ($users as $user) {

@@ -4,8 +4,8 @@
             <img src="/assets/dashboard-illustrasi/profil.jpg" alt="Profile Picture" class="w-full h-full object-cover">
         </div>
         <div>
-            <h1 class="text-2xl font-bold">Username</h1>
-            <h2 class="text-xl">Warga Desa Lorem</h2>
+            <h1 class="text-2xl font-bold">{{ $user->nama_lengkap }}</h1>
+            <h2 class="text-xl">Warga Desa {{ $desa->desa }}</h2>
         </div>
     </div>
     <nav class="mt-4 basis-3/5 flex flex-col justify-between">

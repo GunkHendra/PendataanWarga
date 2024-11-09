@@ -104,7 +104,7 @@
 
             <div>
                 <label for="nominal_iuran">Nominal Iuran</label><br>
-                <input type="number" id="nominal_iuran" name="nominal_iuran" placeholder="Ex. 10000000" class="w-full bg-gray-200 rounded p-2" value="{{ old('nominal_iuran') }}">
+                <input type="text" id="nominal_iuran" name="nominal_iuran" placeholder="Ex. 10000000" class="w-full bg-gray-200 rounded p-2" value="{{ old('nominal_iuran') }}">
             </div>
 
             <div>
@@ -113,7 +113,7 @@
             </div>
 
             <div class="flex col-start-3">
-                <button type="submit" class="bg-emerald-400 text-white p-4 rounded w-full text-2xl">Daftarkan</button>
+                <button type="submit" class="bg-emerald-400 text-white p-4 rounded w-full text-2xl" onclick="getNumberValue()">Daftarkan</button>
             </div>
         </div>
     </form>

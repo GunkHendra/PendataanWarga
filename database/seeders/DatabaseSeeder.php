@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Carbon\Carbon;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Desa;
 use App\Models\User;
 use App\Models\Year;
 use Illuminate\Database\Seeder;
@@ -39,7 +40,8 @@ class DatabaseSeeder extends Seeder
             'remember_token' => NULL,
         ]);
 
-        Year::create([
+        Desa::create([
+            'desa' => "Pemecutan",
             'tahun' => Carbon::now()->year,
         ]);
     }

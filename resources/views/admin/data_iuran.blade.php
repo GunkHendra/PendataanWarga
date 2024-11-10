@@ -90,7 +90,7 @@
               @endif
             </td>
             <td class="px-4 py-5 text-center border-b border-gray-400">{{ $payment->tanggal_iuran }}</td>
-            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $payment->nominal_iuran }}</td>
+            <td class="px-4 py-5 text-center border-b border-gray-400">{{ number_format((int)$payment->nominal_iuran, 0, ',', '.') }}</td>
             <td class="px-4 py-5 text-center border-b border-gray-400">
               @if ($payment->status_iuran)
                 <span class="px-4 py-2 bg-green-500 text-white rounded">

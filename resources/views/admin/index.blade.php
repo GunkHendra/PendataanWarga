@@ -25,7 +25,7 @@
             <img src="/assets/dashboard-icon/notepad-dashboard.png" alt="Profile Picture" class="w-full h-full object-cover">
         </div>
         <div>
-            <h2 class="text-3xl font-bold text-white">+ Rp. {{ $total_payment }}</h2>
+            <h2 class="text-3xl font-bold text-white">+ Rp. {{ number_format((int)$total_payment, 0, ',', '.') }}</h2>
             <h2 class="text-xl font-bold text-black">Total Jumlah Pelunasan Iuran</h2>
         </div>
     </div>
@@ -67,7 +67,7 @@
             <img src="/assets/dashboard-icon/money-wings.png" alt="Profile Picture" class="w-full h-full">
         </div>
         <div>
-            <h2 class="text-3xl font-bold text-white">- Rp. {{ $total_payment_belum }}</h2>
+            <h2 class="text-3xl font-bold text-white">- Rp. {{ number_format((int)$total_payment_belum, 0, ',', '.') }}</h2>
             <h2 class="text-xl font-bold text-black">Total Iuran Belum Lunas</h2>
         </div>
     </div>

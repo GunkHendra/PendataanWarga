@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use Carbon\Carbon;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Desa;
+use App\Models\User;
+use App\Models\Year;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -35,6 +38,11 @@ class DatabaseSeeder extends Seeder
             'password' => '1',
             'status_warga' => '1',
             'remember_token' => NULL,
+        ]);
+
+        Desa::create([
+            'desa' => "Pemecutan",
+            'tahun' => Carbon::now()->year,
         ]);
     }
 }

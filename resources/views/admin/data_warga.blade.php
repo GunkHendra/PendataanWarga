@@ -53,52 +53,61 @@
   <div class="overflow-x-auto">
     <table class="min-w-full w-full mx-auto bg-white border border-collapse border-gray-400">
       <thead class="bg-gray-100">
-        <tr>
-          <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">NIK</th>
-          <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Nama Lengkap</th>
-          <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Alamat</th>
-          <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Nomor Telp</th>
-          <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Status Warga</th>
-          <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Aksi</th>
-        </tr>
+        @if (!$users->isEmpty())
+          <tr>
+            <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">NIK</th>
+            <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Nama Lengkap</th>
+            <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Alamat</th>
+            <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Nomor Telp</th>
+            <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Status Warga</th>
+            <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Aksi</th>
+          </tr>
+        @endif
       </thead>
       <tbody>
-      @foreach ($users as $user)  
-      <tr>
-        <td class="px-4 py-5 text-center border-b border-gray-400">{{ $user->NIK }}</td>
-        <td class="px-4 py-5 text-center border-b border-gray-400">{{ $user->nama_lengkap }}</td>
-        <td class="px-4 py-5 text-center border-b border-gray-400">{{ $user->alamat }}</td>
-        <td class="px-4 py-5 text-center border-b border-gray-400">{{ $user->nomor_telepon }}</td>
-        <td class="px-4 py-5 text-center text-white border-b border-gray-400">
-          @if ($user->status_warga)
-          <span class="px-4 py-2 bg-green-500 text-white rounded">
-            Aktif
-          </span>
-          @else
-          <span class="px-4 py-2 bg-red-500 text-white rounded">
-            Tidak Aktif
-          </span>
-          @endif
-        </td>
-        <td class="py-5 text-center border-b border-gray-400">
-          <form class="flex justify-center" id="confirmForm-{{ $user->id }}" action="/admin/update_warga" method="POST">
-            @csrf
-            @if (!$user->status_warga)
-            <button class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700" onclick="konfirmasi(event, '{{ $user->id }}', 1)">
-              Aktifkan
-            </button>
-            @else
-            <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700" onclick="konfirmasi(event, '{{ $user->id }}', 0)">
-              Nonaktifkan
-            </button>
-            @endif
-            <input type="hidden" name="id" id="id-{{ $user->id }}">
-            <input type="hidden" name="status_warga" id="status-{{ $user->id }}">
-          </form>
-        </td>
-      </tr>
-      @endforeach
-
+        @if ($users->isEmpty())
+          <tr class="flex justify-center">
+              <td class="px-2 py-4">
+                  Belum ada data.
+              </td>
+          </tr>
+        @else   
+          @foreach ($users as $user)  
+          <tr>
+            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $user->NIK }}</td>
+            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $user->nama_lengkap }}</td>
+            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $user->alamat }}</td>
+            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $user->nomor_telepon }}</td>
+            <td class="px-4 py-5 text-center text-white border-b border-gray-400">
+              @if ($user->status_warga)
+              <span class="px-4 py-2 bg-green-500 text-white rounded">
+                Aktif
+              </span>
+              @else
+              <span class="px-4 py-2 bg-red-500 text-white rounded">
+                Tidak Aktif
+              </span>
+              @endif
+            </td>
+            <td class="py-5 text-center border-b border-gray-400">
+              <form class="flex justify-center" id="confirmForm-{{ $user->id }}" action="/admin/update_warga" method="POST">
+                @csrf
+                @if (!$user->status_warga)
+                <button class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700" onclick="konfirmasi(event, '{{ $user->id }}', 1)">
+                  Aktifkan
+                </button>
+                @else
+                <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700" onclick="konfirmasi(event, '{{ $user->id }}', 0)">
+                  Nonaktifkan
+                </button>
+                @endif
+                <input type="hidden" name="id" id="id-{{ $user->id }}">
+                <input type="hidden" name="status_warga" id="status-{{ $user->id }}">
+              </form>
+            </td>
+          </tr>
+          @endforeach
+        @endif
       </tbody>
     </table>
 

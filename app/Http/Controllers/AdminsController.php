@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Desa;
 use App\Models\User;
 use App\Models\Iuran;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class AdminsController extends Controller
 {
@@ -24,12 +26,16 @@ class AdminsController extends Controller
             'total_warga_datang' => User::where('status_warga', '1')->where('is_admin', '0')->whereBetween('created_at', [$startOfMonth, $endOfMonth])->count(),
             'total_payment_belum' => Payment::where('status_iuran', '0')->whereBetween('tanggal_iuran', [$startOfMonth, $endOfMonth])->sum('nominal_iuran'),
             'total_warga_belum' => Payment::where('status_iuran', '0')->whereBetween('tanggal_iuran', [$startOfMonth, $endOfMonth])->count(),
+            'user' => Auth::user(),
+            'desa' => Desa::first(),
         ]);
     }
 
     function pendataan_warga(){
         return view('/admin/pendataan_warga', [
             'title' => 'Pendataan Warga',
+            'user' => Auth::user(),
+            'desa' => Desa::first(),
         ]);
     }
 
@@ -37,6 +43,8 @@ class AdminsController extends Controller
         return view('/admin/pendataan_iuran_warga', [
             'title' => 'Pendataan Iuran Warga',
             'users' => User::all(),
+            'user' => Auth::user(),
+            'desa' => Desa::first(),
         ]);
     }
 
@@ -52,6 +60,8 @@ class AdminsController extends Controller
             'title' => 'Data Iuran Warga',
             'payments' => $payment->paginate(5)->withQueryString(),
             'users' => User::all(),
+            'user' => Auth::user(),
+            'desa' => Desa::first(),
         ]);
     }
 
@@ -65,6 +75,8 @@ class AdminsController extends Controller
         return view('/admin/data_warga', [
             'title' => 'Data Warga Pendatang',
             'users' => $user->paginate(5)->withQueryString(),
+            'user' => Auth::user(),
+            'desa' => Desa::first(),
         ]);
     }
 

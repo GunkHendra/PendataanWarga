@@ -62,10 +62,10 @@
                 @endif
             </thead>
             <tbody>
-                @if ($payment->first() === null)
+                @if ($payment->isEmpty())
                 <tr class="flex justify-center">
                     <td class="px-2 py-4">
-                        Anda masih belum memiliki data iuran.
+                        Anda tidak memiliki iuran bulan ini.
                     </td>
                 </tr>
                 @else

@@ -32,6 +32,7 @@ class RegisterController extends Controller
             'tanggal_iuran' => ['required', 'date'],
             'nominal_iuran' => ['required'],
         ]);
+        $validated_iuran['nominal_iuran'] = str_replace('.', '', $request->nominal_iuran);
         
         $inputDate = Carbon::parse($validated_iuran['tanggal_iuran']);
         $currentYear = $inputDate->year;

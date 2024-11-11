@@ -110,7 +110,7 @@
             </form>
           </td>
         </td>
-      </tr> 
+      </tr>
     @endforeach
     </tbody>
   </table>
@@ -134,7 +134,7 @@
     id = idValue;
     status = statusValue;
   }
-  
+
   document.getElementById('confirmTerima').addEventListener('click', function(){
     document.getElementById('id-' + id).value = id;
     document.getElementById('status-' + id).value = status;
@@ -146,7 +146,7 @@
     document.getElementById('status-' + id).value = status;
     document.getElementById('confirmForm-' + id).submit();
   });
-    
+
   document.getElementById('cancelTerima').addEventListener('click', function () {
       document.getElementById('terimaModal').classList.add('hidden');
   });

@@ -66,63 +66,62 @@
       @endif
     </thead>
     <tbody>
-    @if ($payments->isEmpty())
-      <tr class="flex justify-center">
-          <td class="px-2 py-4">
-              Belum ada data.
-          </td>
-      </tr>
-    @else
-    @foreach ($payments as $payment)
-    <tr>
-      <td class="px-4 py-5 text-center border-b border-gray-400">{{ $payment->user->NIK }}</td>
-      <td class="px-4 py-5 text-center max-w-xs break-words border-b border-gray-400">{{ $payment->user->nama_lengkap }}</td>
-      <td class="px-4 py-5 text-center border-b border-gray-400">
-        {{-- {{ dd($payment->user->status_warga) }} --}}
-        @if ($payment->user->status_warga)
-        <span class="px-4 py-2 bg-green-500 text-white rounded">
-          Aktif
-        </span>
-        @else
-        <span class="px-4 py-2 bg-red-500 text-white rounded">
-          Tidak Aktif
-        </span>
-        @endif
-      </td>
-      <td class="px-4 py-5 text-center border-b border-gray-400 whitespace-nowrap">{{ $payment->tanggal_iuran }}</td>
-      <td class="px-4 py-5 text-center border-b border-gray-400">{{ number_format((int)$payment->nominal_iuran, 0, ',', '.') }}</td>
-      <td class="px-4 py-5 text-center border-b border-gray-400">
-        @if ($payment->status_iuran)
-        <span class="px-4 py-2 bg-green-500 text-white rounded">
-            Lunas
-        </span>
-          @else
-        <span class="px-4 py-2 bg-red-500 text-white rounded whitespace-nowrap">
-            Belum Lunas
-       </span>
-        @endif
-       </td>
-
-        <td class="px-4 py-5 text-center border-b border-gray-400">
-          <form id="confirmForm-{{ $payment->id }}" action="/admin/update_iuran" method="POST">
-            @csrf
-            @if (!$payment->status_iuran)
-            <button class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700" onclick="konfirmasi(event, '{{ $payment->id }}', 1)">
-              Terima
-            </button>
-            @else
-            <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700" onclick="konfirmasi(event, '{{ $payment->id }}', 0)">
-              Batal
-            </button>
-            @endif
-            <input type="hidden" name="id" id="id-{{ $payment->id }}">
-            <input type="hidden" name="status_iuran" id="status-{{ $payment->id }}">
-          </form>
-        </td>
-      </td>
-    </tr> 
-    @endforeach
-    @endif
+      @if ($payments->isEmpty())
+        <tr class="flex justify-center">
+            <td class="px-2 py-4">
+                Belum ada data.
+            </td>
+        </tr>
+      @else
+        @foreach ($payments as $payment)
+          <tr>
+            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $payment->user->NIK }}</td>
+            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $payment->user->nama_lengkap }}</td>
+            <td class="px-4 py-5 text-center border-b border-gray-400">
+              {{-- {{ dd($payment->user->status_warga) }} --}}
+              @if ($payment->user->status_warga)
+              <span class="px-4 py-2 bg-green-500 text-white rounded">
+                Aktif
+              </span>
+              @else
+              <span class="px-4 py-2 bg-red-500 text-white rounded">
+                Tidak Aktif
+              </span>
+              @endif
+            </td>
+            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $payment->tanggal_iuran }}</td>
+            <td class="px-4 py-5 text-center border-b border-gray-400">{{ number_format((int)$payment->nominal_iuran, 0, ',', '.') }}</td>
+            <td class="px-4 py-5 text-center border-b border-gray-400">
+              @if ($payment->status_iuran)
+                <span class="px-4 py-2 bg-green-500 text-white rounded">
+                  Lunas
+                </span>
+              @else
+                <span class="px-4 py-2 bg-red-500 text-white rounded">
+                  Belum Lunas
+                </span>
+              @endif
+              <td class="px-4 py-5 text-center border-b border-gray-400">
+                <form id="confirmForm-{{ $payment->id }}" action="/admin/update_iuran" method="POST">
+                  @csrf
+                  @if (!$payment->status_iuran)
+                  <button class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700" onclick="konfirmasi(event, '{{ $payment->id }}', 1)">
+                    Terima
+                  </button>
+                  @else
+                  <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700" onclick="konfirmasi(event, '{{ $payment->id }}', 0)">
+                    Batal
+                  </button>
+                  @endif
+                  <input type="hidden" name="id" id="id-{{ $payment->id }}">
+                  <input type="hidden" name="status_iuran" id="status-{{ $payment->id }}">
+                  <input type="hidden" name="status_warga" value="{{ $payment->user->status_warga }}"">
+                </form>
+              </td>
+            </td>
+          </tr>
+        @endforeach
+      @endif
     </tbody>
   </table>
 
@@ -145,7 +144,7 @@
     id = idValue;
     status = statusValue;
   }
-  
+
   document.getElementById('confirmTerima').addEventListener('click', function(){
     document.getElementById('id-' + id).value = id;
     document.getElementById('status-' + id).value = status;
@@ -157,7 +156,7 @@
     document.getElementById('status-' + id).value = status;
     document.getElementById('confirmForm-' + id).submit();
   });
-    
+
   document.getElementById('cancelTerima').addEventListener('click', function () {
       document.getElementById('terimaModal').classList.add('hidden');
   });

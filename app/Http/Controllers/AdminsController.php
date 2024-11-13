@@ -16,7 +16,7 @@ class AdminsController extends Controller
     function index(){
         $startOfMonth = Carbon::now()->startOfMonth();
         $endOfMonth = Carbon::now()->endOfMonth();
-        
+
         return view('/admin/index', [
             'title' => 'Dashboard',
             'month' => Carbon::now()->format('F'),

@@ -86,6 +86,7 @@ class AdminsController extends Controller
             'status_iuran' => ['required'],
             'status_warga' => ['required'],
         ]);
+        
         if ($validated['status_warga']){
             Payment::where('id', $validated['id'])->update(['status_iuran' => $validated['status_iuran']]);
         } else{

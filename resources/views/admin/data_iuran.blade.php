@@ -53,6 +53,7 @@
 <div class="overflow-x-auto rounded-lg mb-20">
   <table class="min-w-full w-full mx-auto bg-white border border-gray-400">
     <thead class="bg-gray-100 text-black">
+      @if (!$payments->isEmpty())
       <tr>
         <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">NIK</th>
         <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">Nama Lengkap</th>
@@ -62,6 +63,7 @@
         <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Status Iuran</th>
         <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Aksi</th>
       </tr>
+      @endif
     </thead>
     <tbody>
     @if ($payments->isEmpty())

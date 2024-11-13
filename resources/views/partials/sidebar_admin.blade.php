@@ -10,9 +10,9 @@
     </div>
     <nav class="mt-4 basis-3/5 flex flex-col justify-between">
         <div>
-            <a href="/admin" class="flex flex-row py-2 px-4 text-gray-100 hover:bg-emerald-700 hover:text-white gap-2 items-center"><span><img class="w-12 h-12" src="/assets/dashboard-icon/home.png" alt="Home Icon"></span>Dashboard</a>
-            <a href="/admin/data_warga" class="flex flex-row py-2 px-4 text-gray-100 hover:bg-emerald-700 hover:text-white gap-2 items-center"><span><img class="w-12 h-12" src="/assets/dashboard-icon/notepad.png" alt="Home Icon"></span>Data Warga Pendatang</a>
-            <a href="/admin/data_iuran" class="flex flex-row py-2 px-4 text-gray-100 hover:bg-emerald-700 hover:text-white gap-2 items-center"><span><img class="w-12 h-12" src="/assets/dashboard-icon/money.png" alt="Home Icon"></span>Data Iuran Warga</a>
+            <a href="/admin" class="{{ ($title === 'Dashboard') ? 'bg-emerald-600' : '' }} flex flex-row py-2 px-4 text-gray-100 hover:bg-emerald-700 hover:text-white gap-2 items-center"><span><img class="w-12 h-12" src="/assets/dashboard-icon/home.png" alt="Home Icon"></span>Dashboard</a>
+            <a href="/admin/data_warga" class="{{ ($title === 'Data Warga Pendatang' || $title === 'Pendataan Warga') ? 'bg-emerald-600' : '' }} flex flex-row py-2 px-4 text-gray-100 hover:bg-emerald-700 hover:text-white gap-2 items-center"><span><img class="w-12 h-12" src="/assets/dashboard-icon/notepad.png" alt="Home Icon"></span>Data Warga Pendatang</a>
+            <a href="/admin/data_iuran" class="{{ ($title === 'Data Iuran Warga') ? 'bg-emerald-600' : '' }} flex flex-row py-2 px-4 text-gray-100 hover:bg-emerald-700 hover:text-white gap-2 items-center"><span><img class="w-12 h-12" src="/assets/dashboard-icon/money.png" alt="Home Icon"></span>Data Iuran Warga</a>
         </div>
         {{-- <form method="POST" action="/logout" class="flex flex-row py-2 px-4 bg-red-500 text-gray-100 hover:bg-red-700 hover:text-white gap-2 items-center">
             @csrf

@@ -71,7 +71,7 @@
                 @else
                 <tr>
                     <td class="px-4 py-2 text-center border-b border-gray-400">1</td>
-                    <td class="px-4 py-2 text-center border-b border-gray-400">{{ $payment[0]->nominal_iuran }}</td>
+                    <td class="px-4 py-2 text-center border-b border-gray-400">{{ number_format((int)$payment[0]->nominal_iuran, 0, ',', '.') }}</td>
                     {{-- {{ dd($payment) }} --}}
                     <td class="px-4 py-2 text-center border-b border-gray-400">
                         @if ($payment[0]->user->status_warga)

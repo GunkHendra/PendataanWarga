@@ -10,8 +10,8 @@
     </div>
     <nav class="mt-4 basis-3/5 flex flex-col justify-between">
         <div>
-            <a href="/user" class="flex flex-row py-2 px-4 text-gray-100 hover:bg-emerald-700 hover:text-white gap-2 items-center"><span><img class="w-12 h-12" src="/assets/dashboard-icon/home.png" alt="Home Icon"></span>Dashboard</a>
-            <a href="/user/riwayat_iuran" class="flex flex-row py-2 px-4 text-gray-100 hover:bg-emerald-700 hover:text-white gap-2 items-center"><span><img class="w-12 h-12" src="/assets/dashboard-icon/notepad.png" alt="Home Icon"></span>Riwayat Iuran</a>
+            <a href="/user" class="{{ ($title === 'Dashboard') ? 'bg-emerald-600' : '' }} flex flex-row py-2 px-4 text-gray-100 hover:bg-emerald-700 hover:text-white gap-2 items-center"><span><img class="w-12 h-12" src="/assets/dashboard-icon/home.png" alt="Home Icon"></span>Dashboard</a>
+            <a href="/user/riwayat_iuran" class="{{ ($title === 'Riwayat Iuran') ? 'bg-emerald-600' : '' }} flex flex-row py-2 px-4 text-gray-100 hover:bg-emerald-700 hover:text-white gap-2 items-center"><span><img class="w-12 h-12" src="/assets/dashboard-icon/notepad.png" alt="Home Icon"></span>Riwayat Iuran</a>
         </div>
         {{-- <form method="POST" action="/logout" class="flex flex-row py-2 px-4 bg-red-500 text-gray-100 hover:bg-red-700 hover:text-white gap-2 items-center">
             @csrf

@@ -1,7 +1,7 @@
 @extends('layouts/layout')
 
 @section('content')
-<div class="flex flex-col gap-4 h-[90vh]">
+<div class="flex flex-col gap-4 h-[87vh]">
     <div class="grid grid-cols-3 grid-rows-2 gap-4 basis-3/5">
         {{-- Total Warga Pendatang --}}
         <div class="relative bg-emerald-400 rounded-lg shadow-lg flex flex-col text-center items-center space-y-4 p-6">

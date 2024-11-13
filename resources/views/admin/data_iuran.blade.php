@@ -64,6 +64,13 @@
       </tr>
     </thead>
     <tbody>
+    @if ($payments->isEmpty())
+      <tr class="flex justify-center">
+          <td class="px-2 py-4">
+              Belum ada data.
+          </td>
+      </tr>
+    @else
     @foreach ($payments as $payment)
     <tr>
       <td class="px-4 py-5 text-center border-b border-gray-400">{{ $payment->user->NIK }}</td>
@@ -113,6 +120,7 @@
       </td>
     </tr> 
     @endforeach
+    @endif
     </tbody>
   </table>
 

@@ -39,7 +39,7 @@
       </form>
     </div>
   </div>
-  
+
   <br>
 
   <div class="flex justify-end">
@@ -71,8 +71,8 @@
                   Belum ada data.
               </td>
           </tr>
-        @else   
-          @foreach ($users as $user)  
+        @else
+          @foreach ($users as $user)
           <tr>
             <td class="px-4 py-5 text-center border-b border-gray-400">{{ $user->NIK }}</td>
             <td class="px-4 py-5 text-center border-b border-gray-400">{{ $user->nama_lengkap }}</td>
@@ -130,7 +130,7 @@
     id = idValue;
     status = statusValue;
   }
-  
+
   document.getElementById('confirmTerima').addEventListener('click', function(){
     document.getElementById('id-' + id).value = id;
     document.getElementById('status-' + id).value = status;
@@ -142,7 +142,7 @@
     document.getElementById('status-' + id).value = status;
     document.getElementById('confirmForm-' + id).submit();
   });
-    
+
   document.getElementById('cancelTerima').addEventListener('click', function () {
       document.getElementById('terimaModal').classList.add('hidden');
   });

@@ -4,7 +4,7 @@
             <img src="/assets/dashboard-illustrasi/profil.jpg" alt="Profile Picture" class="w-full h-full object-cover">
         </div>
         <div>
-            <h1 class="text-2xl font-bold">{{ $user->nama_lengkap }}</h1>
+            <h1 class="text-2xl font-bold">{{ $admin->nama_lengkap }}</h1>
             <h2 class="text-xl">Admin Desa {{ $desa->desa }}</h2>
         </div>
     </div>

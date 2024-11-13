@@ -75,7 +75,7 @@
           @foreach ($users as $user)  
           <tr>
             <td class="px-4 py-5 text-center border-b border-gray-400">{{ $user->NIK }}</td>
-            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $user->nama_lengkap }}</td>
+            <td class="px-4 py-5 text-center max-w-xs break-words border-b border-gray-400">{{ $user->nama_lengkap }}</td>
             <td class="px-4 py-5 text-center border-b border-gray-400">{{ $user->alamat }}</td>
             <td class="px-4 py-5 text-center border-b border-gray-400">{{ $user->nomor_telepon }}</td>
             <td class="px-4 py-5 text-center text-white border-b border-gray-400">

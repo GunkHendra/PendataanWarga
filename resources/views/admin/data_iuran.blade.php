@@ -28,7 +28,7 @@
   <div class="w-full max-w-lg">
     <form action="/admin/data_iuran" method="GET" class="flex items-center justify-between gap-2">
       <input
-        type="text" name="search"
+        type="text"
         class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
         placeholder="Mau Cari Data Iuran Siapa?"/>
         <img src="/assets/dashboard-icon/IconSearch.png" alt="searchIcon" class="w-10 h-10 border rounded-lg border-gray-300">
@@ -50,78 +50,69 @@
 
 <br>
 
-<div class="overflow-x-auto">
+<div class="overflow-x-auto rounded-lg mb-20">
   <table class="min-w-full w-full mx-auto bg-white border border-gray-400">
     <thead class="bg-gray-100 text-black">
-      @if (!$payments->isEmpty())
-        <tr>
-          <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">NIK</th>
-          <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">Nama Lengkap</th>
-          <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">Status Warga</th>
-          <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Tanggal Iuran</th>
-          <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Nominal Iuran</th>
-          <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Status Iuran</th>
-          <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Aksi</th>
-        </tr>
-      @endif
+      <tr>
+        <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">NIK</th>
+        <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">Nama Lengkap</th>
+        <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">Status Warga</th>
+        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Tanggal Iuran</th>
+        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Nominal Iuran</th>
+        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Status Iuran</th>
+        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Aksi</th>
+      </tr>
     </thead>
     <tbody>
-      @if ($payments->isEmpty())
-        <tr class="flex justify-center">
-            <td class="px-2 py-4">
-                Belum ada data.
-            </td>
-        </tr>
-      @else        
-        @foreach ($payments as $payment)
-          <tr>
-            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $payment->user->NIK }}</td>
-            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $payment->user->nama_lengkap }}</td>
-            <td class="px-4 py-5 text-center border-b border-gray-400">
-              {{-- {{ dd($payment->user->status_warga) }} --}}
-              @if ($payment->user->status_warga)
-              <span class="px-4 py-2 bg-green-500 text-white rounded">
-                Aktif
-              </span>
-              @else
-              <span class="px-4 py-2 bg-red-500 text-white rounded">
-                Tidak Aktif
-              </span>
-              @endif
-            </td>
-            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $payment->tanggal_iuran }}</td>
-            <td class="px-4 py-5 text-center border-b border-gray-400">{{ number_format((int)$payment->nominal_iuran, 0, ',', '.') }}</td>
-            <td class="px-4 py-5 text-center border-b border-gray-400">
-              @if ($payment->status_iuran)
-                <span class="px-4 py-2 bg-green-500 text-white rounded">
-                  Lunas
-                </span>
-              @else
-                <span class="px-4 py-2 bg-red-500 text-white rounded">
-                  Belum Lunas
-                </span>
-              @endif
-              <td class="px-4 py-5 text-center border-b border-gray-400">
-                <form id="confirmForm-{{ $payment->id }}" action="/admin/update_iuran" method="POST">
-                  @csrf
-                  @if (!$payment->status_iuran)
-                  <button class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700" onclick="konfirmasi(event, '{{ $payment->id }}', 1)">
-                    Terima
-                  </button>
-                  @else
-                  <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700" onclick="konfirmasi(event, '{{ $payment->id }}', 0)">
-                    Batal
-                  </button>
-                  @endif
-                  <input type="hidden" name="id" id="id-{{ $payment->id }}">
-                  <input type="hidden" name="status_iuran" id="status-{{ $payment->id }}">
-                  <input type="hidden" name="status_warga" value="{{ $payment->user->status_warga }}"">
-                </form>
-              </td>
-            </td>
-          </tr> 
-        @endforeach
-      @endif
+    @foreach ($payments as $payment)
+    <tr>
+      <td class="px-4 py-5 text-center border-b border-gray-400">{{ $payment->user->NIK }}</td>
+      <td class="px-4 py-5 text-center max-w-xs break-words border-b border-gray-400">{{ $payment->user->nama_lengkap }}</td>
+      <td class="px-4 py-5 text-center border-b border-gray-400">
+        {{-- {{ dd($payment->user->status_warga) }} --}}
+        @if ($payment->user->status_warga)
+        <span class="px-4 py-2 bg-green-500 text-white rounded">
+          Aktif
+        </span>
+        @else
+        <span class="px-4 py-2 bg-red-500 text-white rounded">
+          Tidak Aktif
+        </span>
+        @endif
+      </td>
+      <td class="px-4 py-5 text-center border-b border-gray-400 whitespace-nowrap">{{ $payment->tanggal_iuran }}</td>
+      <td class="px-4 py-5 text-center border-b border-gray-400">{{ $payment->nominal_iuran }}</td>
+      <td class="px-4 py-5 text-center border-b border-gray-400">
+        @if ($payment->status_iuran)
+        <span class="px-4 py-2 bg-green-500 text-white rounded">
+            Lunas
+        </span>
+          @else
+        <span class="px-4 py-2 bg-red-500 text-white rounded whitespace-nowrap">
+            Belum Lunas
+       </span>
+        @endif
+       </td>
+
+        <td class="px-4 py-5 text-center border-b border-gray-400">
+          <form id="confirmForm-{{ $payment->id }}" action="/admin/update_iuran" method="POST">
+            @csrf
+            @if (!$payment->status_iuran)
+            <button class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700" onclick="konfirmasi(event, '{{ $payment->id }}', 1)">
+              Terima
+            </button>
+            @else
+            <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700" onclick="konfirmasi(event, '{{ $payment->id }}', 0)">
+              Batal
+            </button>
+            @endif
+            <input type="hidden" name="id" id="id-{{ $payment->id }}">
+            <input type="hidden" name="status_iuran" id="status-{{ $payment->id }}">
+          </form>
+        </td>
+      </td>
+    </tr> 
+    @endforeach
     </tbody>
   </table>
 

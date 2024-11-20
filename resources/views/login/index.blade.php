@@ -10,7 +10,7 @@
         @vite('resources/css/app.css')
     </head>
     <body class="bg-white font-poppins w-full h-full flex min-h-screen">
-        <div class="bg-emerald-400 basis-1/2 flex justify-center items-center">
+        <div class="bg-gradient-to-b from-emerald-300 via-emerald-500 to-emerald-600 basis-1/2 flex justify-center items-center">
             <img src="/assets/dashboard-illustrasi/Asset 1.png" alt="Illustrasi" class="w-1/2 h-1/2">
         </div>
         <div class="basis-1/2 flex flex-col space-y-4 items-center justify-center">
@@ -29,7 +29,7 @@
               @csrf
               <div class="mb-4">
                 <input name="NIK" type="text" id="nik" class="w-full py-2 border-b-2 border-emerald-400 focus:outline-none" placeholder="Nomor Induk Kependudukan" required>
-                @error('nik')
+                @error('NIK')
                     <small class="text-red-400">{{ $message }}</small>
                 @enderror
               </div>

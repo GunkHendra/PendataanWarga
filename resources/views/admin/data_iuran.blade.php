@@ -116,6 +116,7 @@
                   <input type="hidden" name="id" id="id-{{ $payment->id }}">
                   <input type="hidden" name="status_iuran" id="status-{{ $payment->id }}">
                   <input type="hidden" name="status_warga" value="{{ $payment->user->status_warga }}"">
+                  <input type="hidden" name="page" id="current-page" value="{{ request('page', 1) }}">
                 </form>
               </td>
             </td>
@@ -126,7 +127,8 @@
   </table>
 
   <div class="mt-4">
-    {{ $payments->links('pagination::tailwind') }}
+    {{-- {{ $payments->links('pagination::tailwind') }} --}}
+    {{ $payments->appends(request()->query())->links('pagination::tailwind') }}
   </div>
 
 </div>
@@ -164,5 +166,16 @@
   document.getElementById('cancelBatal').addEventListener('click', function () {
       document.getElementById('batalModal').classList.add('hidden');
   });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const forms = document.querySelectorAll('form[id^="confirmForm"]');
+    forms.forEach(form => {
+        form.addEventListener('submit', function (e) {
+            const currentPage = new URLSearchParams(window.location.search).get('page') || 1;
+            form.querySelector('#current-page').value = currentPage;
+        });
+    });
+});
+
 </script>
 @endsection

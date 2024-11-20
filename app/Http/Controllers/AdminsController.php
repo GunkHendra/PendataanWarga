@@ -17,6 +17,18 @@ class AdminsController extends Controller
         $startOfMonth = Carbon::now()->startOfMonth();
         $endOfMonth = Carbon::now()->endOfMonth();
 
+        $data = User::where('is_admin', '0')
+            ->selectRaw('MONTH(updated_at) as month, COUNT(*) as total')
+            ->groupBy('month')
+            ->orderBy('month')
+            ->pluck('total', 'month');
+
+        // Format data for the chart
+        $formattedData = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $formattedData[] = $data[$i] ?? 0; // Default to 0 if no data for a month
+        }
+
         return view('/admin/index', [
             'title' => 'Dashboard',
             'month' => Carbon::now()->format('F'),
@@ -28,6 +40,7 @@ class AdminsController extends Controller
             'total_warga_belum' => Payment::where('status_iuran', '0')->whereBetween('tanggal_iuran', [$startOfMonth, $endOfMonth])->count(),
             'admin' => Auth::user(),
             'desa' => Desa::first(),
+            'chartData' => $formattedData,
         ]);
     }
 
@@ -49,7 +62,6 @@ class AdminsController extends Controller
     }
 
     function data_iuran(){
-        // $payment = Payment::join('users', 'payments.user_id', '=', 'users.id')->where('isActive', '1')->orderBy('tanggal_iuran', 'desc');
         $payment = Payment::where('isActive', '1')->orderBy('tanggal_iuran', 'desc');
 
         if (request('search')){
@@ -92,7 +104,9 @@ class AdminsController extends Controller
         } else{
             Payment::where('id', $validated['id'])->update(['status_iuran' => $validated['status_iuran'], 'isActive' => '0']);
         }
-        return redirect('/admin/data_iuran')->with('success', 'Update data berhasil!');
+        // return redirect('/admin/data_iuran')->with('success', 'Update data berhasil!');
+        $page = $request->get('page', 1);
+        return redirect('/admin/data_iuran?page=' . $page)->with('success', 'Status iuran berhasil diperbarui!');
     }
 
     public function update_warga(Request $request){
@@ -109,13 +123,26 @@ class AdminsController extends Controller
             $currentMonthStart = Carbon::now()->startOfMonth();
             Payment::where('user_id', $validated['id'])->where('isActive', '0')->where('status_iuran', '0')->where('tanggal_iuran', '>=', $currentMonthStart)->update(['isActive' => '1']);
         }
-        // $payments = Payment::where('user_id', $validated['id']);
-        // foreach ($payments as $payment){
-        //     if (!$payment->status_iuran){
-        //         Payment::where('id', $payment->id)->update(['isActive' => '0']);
-        //     }
-        // }
 
         return redirect('/admin/data_warga')->with('success', 'Update data berhasil!');
+    }
+
+    public function wargaPendatangChart()
+    {
+        $data = User::where('is_admin', '0')
+            ->selectRaw('MONTH(updated_at) as month, COUNT(*) as total')
+            ->groupBy('month')
+            ->orderBy('month')
+            ->pluck('total', 'month');
+
+        // Format data for the chart
+        $formattedData = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $formattedData[] = $data[$i] ?? 0; // Default to 0 if no data for a month
+        }
+
+        return view('warga.chart', [
+            'chartData' => $formattedData,
+        ]);
     }
 }

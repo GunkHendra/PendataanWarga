@@ -24,6 +24,7 @@ Route::middleware(AdminMiddleware::class)->group(function () {
     Route::post('/admin/pendataan_iuran', [RegisterController::class, 'store_iuran']);
     Route::post('/admin/update_iuran', [AdminsController::class, 'update_iuran']);
     Route::post('/admin/update_warga', [AdminsController::class, 'update_warga']);
+    Route::get('/admin/pelaporan', [AdminsController::class, 'pelaporan']);
 });
 
 // User

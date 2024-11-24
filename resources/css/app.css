@@ -1,3 +1,61 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media print {
+    body {
+        transform: scale(0.95);
+        transform-origin: top center;
+        margin: 0;
+        padding: 0;
+    }
+
+    @page {
+        margin: 0;
+    }
+
+    table {
+        width: 100%;
+        font-size: 10px !important;
+        color: black;
+        /* border-collapse: collapse; */
+    }
+
+    table td span {
+        color: black !important; /* Ensure the text color inside span is black */
+    }
+
+    .text-4xl{
+        font-size: 30px;
+    }
+
+    .text-3xl{
+        font-size: 20px;
+    }
+
+    .overflow-y-auto {
+        max-height: none !important;
+        overflow: visible !important;
+    }
+
+    .overflow-x-auto {
+        overflow: visible !important;
+    }
+
+    .print:hidden {
+        display: none !important;
+    }
+
+    table, tbody, tr, td, th {
+        page-break-inside: avoid !important;
+    }
+
+    .p-10 {
+        padding: 0 !important;
+    }
+
+    div{
+        padding: 0;
+        margin: 0;
+    }
+}

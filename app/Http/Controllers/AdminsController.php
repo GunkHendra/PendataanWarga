@@ -145,4 +145,117 @@ class AdminsController extends Controller
             'chartData' => $formattedData,
         ]);
     }
+
+    public function pelaporan(Request $request)
+    {
+        $data = [];
+        $value = 0;
+        $startOfMonth = Carbon::now()->startOfMonth();
+        $endOfMonth = Carbon::now()->endOfMonth();
+
+        if ($request->query('filter')){
+            $filter = $request->query('filter');
+        } else{
+            $filter = '1';
+        }
+
+        switch ($filter) {
+            case '1': // Total Warga Pendatang
+                $data = User::where('is_admin', '0')->orderBy('NIK', 'asc')->where('status_warga', '1')->get();
+                $value = $data->count();
+                break;
+            case '2': // Total Warga Nambah
+                $data = User::where('status_warga', '1')->where('is_admin', '0')->whereBetween('updated_at', [$startOfMonth, $endOfMonth])->get();
+                $value = $data->count();
+                break;
+            case '3': // Total Pelunasan Iuran
+                $data = Payment::where('isActive', '1')->orderBy('tanggal_iuran', 'desc')->where('status_iuran', '1')->whereBetween('tanggal_iuran', [$startOfMonth, $endOfMonth])->get();
+                $value = $data->sum('nominal_iuran');
+                break;
+            case '4': // Total Iuran Belum Lunas
+                $data = Payment::where('isActive', '1')->orderBy('tanggal_iuran', 'desc')->where('status_iuran', '0')->whereBetween('tanggal_iuran', [$startOfMonth, $endOfMonth])->get();
+                $value = $data->sum('nominal_iuran');
+                break;
+            case '5': // Total Warga Lunas
+                $data = Payment::where('isActive', '1')->where('status_iuran', '1')->whereBetween('tanggal_iuran', [$startOfMonth, $endOfMonth])->get();
+                $value = $data->count();
+                break;
+            case '6': // Total Warga Belum Lunas
+                $data = Payment::where('status_iuran', '0')->whereBetween('tanggal_iuran', [$startOfMonth, $endOfMonth])->get();
+                $value = $data->count();
+                break;
+            default:
+                $data = [];
+                $value = 0;
+                break;
+        }
+
+        return view('admin/pelaporan', [
+            'title' => 'Pelaporan',
+            'admin' => Auth::user(),
+            'desa' => Desa::first(),
+            'month' => Carbon::now()->format('F'),
+            'tanggal_sekarang' => Carbon::now()->format('d F Y'),
+            'filter' => $request->query('filter'),
+            'data' => $data,
+            'value' => $value,
+        ]);
+
+        // $startOfMonth = Carbon::now()->startOfMonth();
+        // $endOfMonth = Carbon::now()->endOfMonth();
+
+        // return view('admin/pelaporan', [
+        //     'title' => 'Pelaporan',
+        //     'admin' => Auth::user(),
+        //     'desa' => Desa::first(),
+        //     'month' => Carbon::now()->format('F'),
+        //     'tanggal_sekarang' => Carbon::now()->format('d F Y'),
+        //     'total_warga' => User::where('status_warga', '1')->where('is_admin', '0')->get(),
+        //     'total_warga_datang' => User::where('status_warga', '1')->where('is_admin', '0')->whereBetween('updated_at', [$startOfMonth, $endOfMonth])->count(),
+        //     'total_payment' => Payment::where('status_iuran', '1')->whereBetween('tanggal_iuran', [$startOfMonth, $endOfMonth])->sum('nominal_iuran'),
+        //     'total_payment_belum' => Payment::where('status_iuran', '0')->whereBetween('tanggal_iuran', [$startOfMonth, $endOfMonth])->sum('nominal_iuran'),
+        //     'total_warga_lunas' => Payment::where('status_iuran', '1')->whereBetween('tanggal_iuran', [$startOfMonth, $endOfMonth])->count(),
+        //     'total_warga_belum' => Payment::where('status_iuran', '0')->whereBetween('tanggal_iuran', [$startOfMonth, $endOfMonth])->count(),
+        // ]);
+    }
+
+    // public function data_tabel_pelaporan(Request $request)
+    // {
+    //     $startOfMonth = Carbon::now()->startOfMonth();
+    //     $endOfMonth = Carbon::now()->endOfMonth();
+        
+    //     $filter = $request->query('filter');
+    //     switch ($filter) {
+    //         case '1': // Total Warga Pendatang
+    //             $data = User::where('status_warga', '1')->where('is_admin', '0')->get();
+    //             break;
+    //         case '2': // Total Warga Nambah
+    //             $data = User::where('status_warga', '1')->where('is_admin', '0')->whereBetween('updated_at', [$startOfMonth, $endOfMonth])->get();
+    //             break;
+    //         case '3': // Total Pelunasan Iuran
+    //             $data = Payment::where('status_iuran', '1')->whereBetween('tanggal_iuran', [$startOfMonth, $endOfMonth])->get();
+    //             break;
+    //         case '4': // Total Iuran Belum Lunas
+    //             $data = Payment::where('status_iuran', '0')->whereBetween('tanggal_iuran', [$startOfMonth, $endOfMonth])->get();
+    //             break;
+    //         case '5': // Total Warga Lunas
+    //             $data = Payment::where('status_iuran', '1')->whereBetween('tanggal_iuran', [$startOfMonth, $endOfMonth])->get();
+    //             break;
+    //         case '6': // Total Warga Belum Lunas
+    //             $data = Payment::where('status_iuran', '0')->whereBetween('tanggal_iuran', [$startOfMonth, $endOfMonth])->get();
+    //             break;
+    //         default:
+    //             $data = [];
+    //             break;
+    //     }
+
+    //     return view('admin/pelaporan', [
+    //         'title' => 'Pelaporan',
+    //         'admin' => Auth::user(),
+    //         'desa' => Desa::first(),
+    //         'month' => Carbon::now()->format('F'),
+    //         'tanggal_sekarang' => Carbon::now()->format('d F Y'),
+    //         'data' => $data,
+    //     ]);
+    // }
 }

@@ -4,7 +4,7 @@
 <div class="flex flex-col gap-4">
     <div class="grid grid-cols-3 grid-rows-2 gap-4">
         {{-- Total Warga Pendatang --}}
-        <div class="relative bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-500 rounded-lg shadow-lg justify-start flex text-center items-center space-y-4 p-6">
+        <a href="/admin/pelaporan?filter=1" class="relative bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-500 rounded-lg shadow-lg justify-start flex text-center items-center space-y-4 p-6">
             <div class="absolute top-0 right-0 bg-emerald-700 text-white py-2 px-4 rounded-bl-lg rounded-tr-md">
                 Keseluruhan
             </div>
@@ -15,24 +15,24 @@
                     <h2 class="text-3xl font-bold text-white">{{ $total_warga }} Warga</h2>
                 </div>
             </div>
-        </div>
+        </a>
 
         {{-- Total Jumlah Pelunasan Iuran --}}
-        <div class="relative bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-500 rounded-lg shadow-lg flex text-center items-center space-y-4 p-6">
+        <a href="/admin/pelaporan?filter=3" class="relative bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-500 rounded-lg shadow-lg flex text-center items-center space-y-4 p-6">
             <div class="absolute top-0 right-0 bg-emerald-700 text-white py-2 px-4 rounded-bl-lg rounded-tr-md">
                 {{ $month }}
             </div>
             <div class="flex justify-between items-start align-middle gap-2">
                 <img src="/assets/dashboard-icon/notepad-dashboard.png" alt="Profile Picture" class="w-20 h-20 object-cover">
                 <div class="flex flex-col justify-between items-start gap-2">
-                    <h2 class="text-xl text-white">Total Jumlah Pelunasan Iuran</h2>
+                    <h2 class="text-xl text-white">Total Pelunasan Iuran</h2>
                     <h2 class="text-3xl font-bold text-white">+ Rp. {{ number_format((int)$total_payment, 0, ',', '.') }}</h2>
                 </div>
             </div>
-        </div>
+        </a>
 
         {{-- Total Warga yang Sudah Lunas --}}
-        <div class="relative bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-500 rounded-lg shadow-lg justify-start flex text-center items-center space-y-4 p-6">
+        <a href="/admin/pelaporan?filter=5" class="relative bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-500 rounded-lg shadow-lg justify-start flex text-center items-center space-y-4 p-6">
             <div class="absolute top-0 right-0 bg-emerald-700 text-white py-2 px-4 rounded-bl-lg rounded-tr-md">
                 {{ $month }}
             </div>
@@ -43,10 +43,10 @@
                     <h2 class="text-3xl font-bold text-white">{{ $total_warga_lunas }} Warga</h2>
                 </div>
             </div>
-        </div>
+        </a>
 
         {{-- Total Penambahan Pendatang Bulan ini --}}
-        <div class="relative bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-500 rounded-lg shadow-lg justify-start flex text-center items-center space-y-4 p-6">
+        <a href="/admin/pelaporan?filter=2" class="relative bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-500 rounded-lg shadow-lg justify-start flex text-center items-center space-y-4 p-6">
             <div class="absolute top-0 right-0 bg-emerald-700 text-white py-2 px-4 rounded-bl-lg rounded-tr-md">
                 {{ $month }}
             </div>
@@ -57,10 +57,10 @@
                     <h2 class="text-3xl font-bold text-white">+{{ $total_warga_datang }} Warga</h2>
                 </div>
             </div>
-        </div>
+        </a>
 
         {{-- Total Iuran Belum Lunas --}}
-        <div class="relative bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-500 rounded-lg shadow-lg justify-start flex text-center items-center space-y-4 p-6">
+        <a href="/admin/pelaporan?filter=4" class="relative bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-500 rounded-lg shadow-lg justify-start flex text-center items-center space-y-4 p-6">
             <div class="absolute top-0 right-0 bg-emerald-700 text-white py-2 px-4 rounded-bl-lg rounded-tr-md">
                 {{ $month }}
             </div>
@@ -71,10 +71,10 @@
                     <h2 class="text-3xl font-bold text-white">- Rp. {{ number_format((int)$total_payment_belum, 0, ',', '.') }}</h2>
                 </div>
             </div>
-        </div>
+        </a>
 
         {{-- Total Warga Belum Lunas --}}
-        <div class="relative bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-500 rounded-lg shadow-lg justify-start flex text-center items-center space-y-4 p-6">
+        <a href="/admin/pelaporan?filter=6" class="relative bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-500 rounded-lg shadow-lg justify-start flex text-center items-center space-y-4 p-6">
             <div class="absolute top-0 right-0 bg-emerald-700 text-white py-2 px-4 rounded-bl-lg rounded-tr-md">
                 {{ $month }}
             </div>
@@ -85,7 +85,7 @@
                     <h2 class="text-3xl font-bold text-white">{{ $total_warga_belum }} Warga</h2>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
     
     <div class="rounded-lg shadow-lg border-2 bg-white h-[30rem] p-4">

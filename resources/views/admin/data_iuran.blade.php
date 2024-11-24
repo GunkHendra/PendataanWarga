@@ -24,21 +24,21 @@
 </div>
 
 <div class="p-10 bg-white rounded-lg">
-<div class="flex items-center justify-center w-full">
-  <div class="w-full max-w-lg">
-    <form action="/admin/data_iuran" method="GET" class="flex items-center justify-between gap-2">
-      <input
-        type="text"
-        class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-        placeholder="Mau Cari Data Iuran Siapa?"/>
-        <img src="/assets/dashboard-icon/IconSearch.png" alt="searchIcon" class="w-10 h-10 border rounded-lg border-gray-300">
-        <button
-        class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
-        type="submit">
-      </button>
-    </form>
+  <div class="flex items-center justify-center w-full">
+    <div class="w-full max-w-lg">
+      <form action="/admin/data_iuran" method="GET" class="flex items-center justify-between gap-2">
+        <input
+          type="text"
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Mau Cari Data Iuran Siapa?"/>
+          <img src="/assets/dashboard-icon/IconSearch.png" alt="searchIcon" class="w-10 h-10 border rounded-lg border-gray-300">
+          <button
+          class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
+          type="submit">
+        </button>
+      </form>
+    </div>
   </div>
-</div>
 
 <br>
 
@@ -50,7 +50,7 @@
 
 <br>
 
-<div class="overflow-x-auto rounded-lg mb-20">
+<div class="overflow-x-auto">
   <table class="min-w-full w-full mx-auto bg-white border border-gray-400">
     <thead class="bg-gray-100 text-black">
       @if (!$payments->isEmpty())
@@ -126,12 +126,12 @@
     </tbody>
   </table>
 
-  <div class="mt-4">
-    {{-- {{ $payments->links('pagination::tailwind') }} --}}
-    {{ $payments->appends(request()->query())->links('pagination::tailwind') }}
-  </div>
+    <div class="mt-4">
+      {{-- {{ $payments->links('pagination::tailwind') }} --}}
+      {{ $payments->appends(request()->query())->links('pagination::tailwind') }}
+    </div>
 
-</div>
+  </div>
 </div>
 
 <script>

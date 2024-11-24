@@ -1,4 +1,4 @@
-<nav class="w-72 bg-gradient-to-t from-emerald-300 via-emerald-600 to-emerald-800 h-full text-white flex flex-col sticky top-0">
+<nav class="w-72 bg-gradient-to-t from-emerald-300 via-emerald-600 to-emerald-800 h-full text-white flex flex-col sticky top-0 print:hidden">
     <div class="p-4 basis-2/5 text-center items-center flex flex-col space-y-4 justify-center">
         <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-emerald-400 ">
             <img src="/assets/dashboard-illustrasi/profil.jpg" alt="Profile Picture" class="w-full h-full object-cover">

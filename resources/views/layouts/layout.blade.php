@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
         @vite('resources/css/app.css')
     </head>
-    <body class="bg-gray-100 font-poppins w-full h-full flex flex-row min-h-screen overflow-hidden">
+    <body class="bg-gray-800 font-poppins w-full h-full flex flex-row min-h-screen overflow-hidden">
         <div class="h-screen sticky">
             @if (request()->is('admin*'))
                 @include('partials/sidebar_admin')
@@ -19,7 +19,7 @@
         </div>
         <div class="w-full">
             @include('partials/topbar')
-            <div class="p-6">
+            <div class="p-6 print:px-0 print:py-6">
                 @yield('content')
             </div>
         </div>

@@ -21,15 +21,15 @@
         /* border-collapse: collapse; */
     }
 
-    table td span {
+    table tr td span {
         color: black !important; /* Ensure the text color inside span is black */
     }
 
-    .text-4xl{
-        font-size: 30px;
+    .text-4xl, .text-lg{
+        font-size: 15px;
     }
 
-    .text-3xl{
+    .text-3xl, .text-base{
         font-size: 20px;
     }
 
@@ -47,7 +47,15 @@
     }
 
     table, tbody, tr, td, th {
-        page-break-inside: avoid !important;
+        page-break-inside: auto !important;
+    }
+
+    #laporan-header{
+        font-size: 40px;
+    }
+
+    #data-header{
+        font-size: 25px;
     }
 
     .p-10 {
@@ -57,5 +65,9 @@
     div{
         padding: 0;
         margin: 0;
+    }
+
+    td:last-child{
+        font-size: 8px;
     }
 }

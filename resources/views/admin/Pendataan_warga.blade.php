@@ -1,11 +1,11 @@
 @extends('layouts/layout')
 
 @section('content')
-    <div class="m-6 p-10 bg-white rounded-lg">
+    <div class="m-6 p-10 bg-gray-700 rounded-lg">
         <form action="/admin/pendataan_warga" method="POST">
             @csrf
             <div class="mb-6">
-                <label for="NIK">Nomor Induk Kependudukan</label><br>
+                <label for="NIK" class="text-white">Nomor Induk Kependudukan</label><br>
                 <input type="number" id="NIK" name="NIK" placeholder="Ex. 123456789" class="w-full bg-gray-200 rounded p-2" required>
                 @error('NIK')
                     <small class="text-red-400">{{ $message }}</small>
@@ -13,18 +13,18 @@
             </div>
 
             <div class="mb-6">
-                <label for="Nama">Nama Lengkap</label><br>
+                <label for="Nama" class="text-white">Nama Lengkap</label><br>
                 <input type="text" id="nama_lengkap" name="nama_lengkap" placeholder="Ex. Ardi Suprianto" class="w-full bg-gray-200 rounded p-2" value="{{ old('nama_lengkap') }}" required>
             </div>
 
             <div class="grid grid-cols-2 gap-4">
                 <div class="mb-6">
-                    <label for="Alamat">Alamat Sesuai KTP</label><br>
+                    <label for="Alamat" class="text-white">Alamat Sesuai KTP</label><br>
                     <input type="text" id="alamat" name="alamat" placeholder="Ex. Jalan Gedung Kiri No. 2" class="w-full bg-gray-200 rounded p-2" value="{{ old('alamat') }}" required>
                 </div>
 
                 <div class="mb-6">
-                    <label for="nomor">Nomor Telepon</label><br>
+                    <label for="nomor" class="text-white">Nomor Telepon</label><br>
                     <input type="number" id="nomor_telepon" name="nomor_telepon" placeholder="Ex. 0812345678" class="w-full bg-gray-200 rounded p-2" value="{{ old('nomor_telepon') }}" required>
                 </div>
             </div>
@@ -32,16 +32,15 @@
 
             <div class="grid grid-cols-3 gap-4">
                 <div class="mb-6">
-                    <label for="tanggal_lahir">Tanggal Lahir</label><br>
+                    <label for="tanggal_lahir" class="text-white">Tanggal Lahir</label><br>
                     <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="w-full bg-gray-200 rounded p-2" value="{{ old('tanggal_lahir') }}" required>
                 </div>
-
                 <div class="mb-6">
-                    <label for="tempat_lahir">Tempat Lahir</label><br>
+                    <label for="tempat_lahir" class="text-white">Tempat Lahir</label><br>
                     <input type="text" id="tempat_lahir" name="tempat_lahir" placeholder="Ex. Denpasar" class="w-full bg-gray-200 rounded p-2" value="{{ old('tempat_lahir') }}" required>
                 </div>
                 <div>
-                    <label for="status">Status (Menikah/Belum Menikah)</label><br>
+                    <label for="status" class="text-white">Status (Menikah/Belum Menikah)</label><br>
                     <div class="relative">
                         <select name="status_menikah" id="status_menikah" class="w-full bg-gray-200 rounded p-2 appearance-none" required>
                             <option value="" disabled selected>Pilih</option>
@@ -55,7 +54,7 @@
 
         <div class="grid grid-cols-3 gap-4 class="mb-6">
             <div class="mb-6">
-                <label for="pekerjaan">Jenis Pekerjaan</label><br>
+                <label for="pekerjaan" class="text-white">Jenis Pekerjaan</label><br>
                 <div class="relative">
                     <select name="jenis_pekerjaan" id="jenis_pekerjaan" class="appearance-none w-full bg-gray-200 border border-gray-300 rounded p-2" required>
                         <option value="" disabled selected>Pilih</option>
@@ -69,7 +68,7 @@
             </div>
 
             <div class="mb-6">
-                <label for="agama">Agama</label><br>
+                <label for="agama" class="text-white">Agama</label><br>
                 <div class="relative">
                     <select name="agama" id="agama" class="w-full bg-gray-200 rounded p-2 appearance-none" required>
                         <option value="" disabled selected>Pilih</option>
@@ -84,7 +83,7 @@
                 </div>
             </div>
             <div>
-                <label for="pendidikan">Pendidikan</label><br>
+                <label for="pendidikan" class="text-white">Pendidikan</label><br>
                 <div class="relative">
                     <select name="pendidikan" id="pendidikan" class="w-full bg-gray-200 rounded p-2 appearance-none" required>
                         <option value="" disabled selected>Pilih</option>
@@ -98,22 +97,22 @@
 
         <div class="grid grid-cols-3 gap-4">
             <div>
-                <label for="password">Kata Sandi</label><br>
+                <label for="password" class="text-white">Kata Sandi</label><br>
                 <input type="password" id="password" name="password" class="w-full bg-gray-200 rounded p-2" required>
             </div>
 
             <div>
-                <label for="nominal_iuran">Nominal Iuran</label><br>
+                <label for="nominal_iuran" class="text-white">Nominal Iuran</label><br>
                 <input type="text" id="nominal_iuran" name="nominal_iuran" placeholder="Ex. 10000000" class="w-full bg-gray-200 rounded p-2" value="{{ old('nominal_iuran') }}"  oninput="formatCurrency(this)">
             </div>
 
             <div>
-                <label for="tanggal">Tanggal Iuran</label><br>
+                <label for="tanggal" class="text-white">Tanggal Iuran</label><br>
                 <input type="date" id="tanggal_iuran" name="tanggal_iuran" class="bg-gray-200 rounded p-2 w-full" value="{{ old('tanggal_iuran') }}">
             </div>
 
             <div class="flex col-start-3">
-                <button type="submit" class="bg-emerald-400 text-white p-4 rounded w-full text-2xl">Daftarkan</button>
+                <button type="submit" class="bg-blue-400 hover:bg-blue-600 transition duration-300 text-white p-4 rounded w-full text-2xl">Daftarkan</button>
             </div>
         </div>
     </form>

@@ -52,25 +52,28 @@ class AdminsController extends Controller
         ]);
     }
 
-    function pendataan_iuran(){
-        return view('/admin/pendataan_iuran_warga', [
-            'title' => 'Pendataan Iuran Warga',
-            'users' => User::all(),
-            'admin' => Auth::user(),
-            'desa' => Desa::first(),
-        ]);
-    }
+    // function pendataan_iuran(){
+    //     return view('/admin/pendataan_iuran_warga', [
+    //         'title' => 'Pendataan Iuran Warga',
+    //         'users' => User::all(),
+    //         'admin' => Auth::user(),
+    //         'desa' => Desa::first(),
+    //     ]);
+    // }
 
     function data_iuran(){
-        $payment = Payment::where('isActive', '1')->orderBy('tanggal_iuran', 'desc');
-
+        $payment = Payment::with(['user'])->where('isActive', '1')->orderBy('tanggal_iuran', 'desc');
+    
         if (request('search')){
-            $payment->where('NIK', 'like', '%' . request('search') . '%')->orWhere('nama_lengkap', 'like', '%' . request('search') . '%');
+            $payment->whereHas('user', function ($query) {
+                $query->where('NIK', 'like', '%' . request('search') . '%')
+                      ->orWhere('nama_lengkap', 'like', '%' . request('search') . '%');
+            });
         }
 
         return view('/admin/data_iuran', [
             'title' => 'Data Iuran Warga',
-            'payments' => $payment->paginate(5)->withQueryString(),
+            'payments' => $payment->paginate(7)->withQueryString(),
             'users' => User::all(),
             'admin' => Auth::user(),
             'desa' => Desa::first(),
@@ -81,12 +84,15 @@ class AdminsController extends Controller
         $user = User::where('is_admin', '0')->orderBy('NIK', 'asc');
 
         if (request('search')){
-            $user->where('nama_lengkap', 'like', '%' . request('search') . '%')->orWhere('NIK', 'like', '%' . request('search') . '%');
+            $user->where(function ($query) {
+                $query->where('nama_lengkap', 'like', '%' . request('search') . '%')
+                      ->orWhere('NIK', 'like', '%' . request('search') . '%');
+            })->where('is_admin', '0');
         }
 
         return view('/admin/data_warga', [
             'title' => 'Data Warga Pendatang',
-            'users' => $user->paginate(5)->withQueryString(),
+            'users' => $user->paginate(7)->withQueryString(),
             'admin' => Auth::user(),
             'desa' => Desa::first(),
         ]);

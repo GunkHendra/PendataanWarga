@@ -2,9 +2,9 @@
 
 @section('content')
 <div id="terimaModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10 hidden">
-  <div class="bg-white p-6 rounded-lg shadow-lg">
-      <h2 class="text-xl font-semibold mb-4">Terima Iuran</h2>
-      <p>Apakah Anda yakin untuk menerima pembayaran iuran ini?</p>
+  <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
+      <h2 class="text-xl text-white font-semibold mb-4">Terima Iuran</h2>
+      <p class="text-white">Apakah Anda yakin untuk menerima pembayaran iuran ini?</p>  
       <div class="mt-6 flex justify-end gap-4">
           <button id="cancelTerima" class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded">Tidak</button>
           <button id="confirmTerima" class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded">Iya</button>
@@ -13,9 +13,9 @@
 </div>
 
 <div id="batalModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10 hidden">
-  <div class="bg-white p-6 rounded-lg shadow-lg">
-      <h2 class="text-xl font-semibold mb-4">Batalkan Iuran</h2>
-      <p>Apakah Anda yakin untuk membatalkan pembayaran iuran ini?</p>
+  <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
+      <h2 class="text-xl text-white font-semibold mb-4">Batalkan Iuran</h2>
+      <p class="text-white">Apakah Anda yakin untuk membatalkan pembayaran iuran ini?</p>  
       <div class="mt-6 flex justify-end gap-4">
           <button id="cancelBatal" class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded">Tidak</button>
           <button id="confirmBatal" class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded">Iya</button>
@@ -23,19 +23,14 @@
   </div>
 </div>
 
-<div class="p-10 bg-white rounded-lg">
+<div class="p-10 rounded-lg">
   <div class="flex items-center justify-center w-full">
     <div class="w-full max-w-lg">
-      <form action="/admin/data_iuran" method="GET" class="flex items-center justify-between gap-2">
+      <form action="/admin/data_iuran" method="GET" class="relative flex items-center justify-between gap-2">
         <input
           type="text"
-          class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          placeholder="Mau Cari Data Iuran Siapa?"/>
-          <img src="/assets/dashboard-icon/IconSearch.png" alt="searchIcon" class="w-10 h-10 border rounded-lg border-gray-300">
-          <button
-          class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
-          type="submit">
-        </button>
+          class="w-full px-4 py-2 border bg-white text-black border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Cari Data Iuran Siapa?" name="search"/>
+          <img src="/assets/dashboard-icon/IconSearch.png" alt="searchIcon" class="absolute right-3 top-1/2 transform -translate-y-1/2 w-10 h-full">
       </form>
     </div>
   </div>
@@ -51,17 +46,17 @@
 <br>
 
 <div class="overflow-x-auto">
-  <table class="min-w-full w-full mx-auto bg-white border border-gray-400">
-    <thead class="bg-gray-100 text-black">
+  <table class="min-w-full w-full mx-auto bg-gray-700 border-none text-white rounded-lg">
+    <thead>
       @if (!$payments->isEmpty())
       <tr>
-        <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">NIK</th>
-        <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">Nama Lengkap</th>
-        <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">Status Warga</th>
-        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Tanggal Iuran</th>
-        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Nominal Iuran</th>
-        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Status Iuran</th>
-        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Aksi</th>
+        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">NIK</th>
+        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Nama Lengkap</th>
+        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Status Warga</th>
+        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Tanggal Iuran</th>
+        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Nominal Iuran</th>
+        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Status Iuran</th>
+        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Aksi</th>
       </tr>
       @endif
     </thead>
@@ -75,9 +70,9 @@
       @else
         @foreach ($payments as $payment)
           <tr>
-            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $payment->user->NIK }}</td>
-            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $payment->user->nama_lengkap }}</td>
-            <td class="px-4 py-5 text-center border-b border-gray-400">
+            <td class="px-4 py-5 text-center">{{ $payment->user->NIK }}</td>
+            <td class="px-4 py-5 text-center">{{ $payment->user->nama_lengkap }}</td>
+            <td class="px-4 py-5 text-center">
               {{-- {{ dd($payment->user->status_warga) }} --}}
               @if ($payment->user->status_warga)
               <span class="px-4 py-2 bg-green-500 text-white rounded">
@@ -89,9 +84,9 @@
               </span>
               @endif
             </td>
-            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $payment->tanggal_iuran }}</td>
-            <td class="px-4 py-5 text-center border-b border-gray-400">{{ number_format((int)$payment->nominal_iuran, 0, ',', '.') }}</td>
-            <td class="px-4 py-5 text-center border-b border-gray-400">
+            <td class="px-4 py-5 text-center">{{ $payment->tanggal_iuran }}</td>
+            <td class="px-4 py-5 text-center">{{ number_format((int)$payment->nominal_iuran, 0, ',', '.') }}</td>
+            <td class="px-4 py-5 text-center">
               @if ($payment->status_iuran)
                 <span class="px-4 py-2 bg-green-500 text-white rounded">
                   Lunas
@@ -101,7 +96,7 @@
                   Belum Lunas
                 </span>
               @endif
-              <td class="px-4 py-5 text-center border-b border-gray-400">
+              <td class="px-4 py-5 text-center">
                 <form id="confirmForm-{{ $payment->id }}" action="/admin/update_iuran" method="POST">
                   @csrf
                   @if (!$payment->status_iuran)

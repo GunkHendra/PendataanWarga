@@ -1,37 +1,37 @@
 @extends('layouts/layout')
 
 @section('content')
-<div class="p-10 bg-white rounded-lg">
+<div class="p-10">
     <div class="overflow-x-auto">
-        <div class="flex justify-start print:hidden">
+        <div class="flex justify-between print:hidden">
             <button 
                 onclick="window.print()" 
-                class="bg-emerald-500 text-white px-4 py-2 rounded shadow hover:bg-emerald-700">
+                class="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition duration-300">
                 Cetak Laporan
             </button>
-        </div>
-        <div class="flex justify-end">
-            <div class="relative">
-                <select name="data-pelaporan" id="data-pelaporan" class="w-full bg-gray-100 rounded p-2 pr-10 appearance-none print:hidden" required>
-                    <option value="1" {{ $filter == 1 ? 'selected' : '' }}>Total Warga Pendatang</option>
-                    <option value="2" {{ $filter == 2 ? 'selected' : '' }}>Total Penambahan Pendatang</option>
-                    <option value="3" {{ $filter == 3 ? 'selected' : '' }}>Total Pelunasan Iuran</option>
-                    <option value="4" {{ $filter == 4 ? 'selected' : '' }}>Total Iuran Belum Lunas</option>
-                    <option value="5" {{ $filter == 5 ? 'selected' : '' }}>Total Warga yang Sudah Lunas</option>
-                    <option value="6" {{ $filter == 6 ? 'selected' : '' }}>Total Warga Belum Lunas</option>
-                </select>
-                <img src="/assets/dashboard-icon/dropDown.png" alt="dropDownIcon" class="w-5 h-5 absolute right-2 top-2.5 pointer-events-none">
+            <div class="flex justify-end">
+                <div class="relative">
+                    <select name="data-pelaporan" id="data-pelaporan" class="w-full bg-gray-700 rounded px-4 py-2 pr-10 appearance-none print:hidden text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500" required>
+                        <option value="1" {{ $filter == 1 ? 'selected' : '' }}>Total Warga Pendatang</option>
+                        <option value="2" {{ $filter == 2 ? 'selected' : '' }}>Total Penambahan Pendatang</option>
+                        <option value="3" {{ $filter == 3 ? 'selected' : '' }}>Total Pelunasan Iuran</option>
+                        <option value="4" {{ $filter == 4 ? 'selected' : '' }}>Total Iuran Belum Lunas</option>
+                        <option value="5" {{ $filter == 5 ? 'selected' : '' }}>Total Warga yang Sudah Lunas</option>
+                        <option value="6" {{ $filter == 6 ? 'selected' : '' }}>Total Warga Belum Lunas</option>
+                    </select>
+                    <img src="/assets/dashboard-icon/dropDown.png" alt="dropDownIcon" class="w-5 h-5 absolute right-2 top-2.5 pointer-events-none">
+                </div>
             </div>
         </div>
 
         {{-- header --}}
-        <div class="relative flex flex-col gap-2">
+        <div class="text-white print:text-black relative flex flex-col gap-2">
             <div class="absolute bottom-0 right-0">
                 <h2 class="text-1xl">{{ $desa->desa }}, {{ $tanggal_sekarang }}</h2>
             </div>
 
             <div class="flex flex-col justify-center items-center gap-2 mb-12">
-                <h1 class="text-4xl font-bold uppercase">PELAPORAN DESA {{ $desa->desa }}</h1>
+                <h1 class="text-4xl font-bold uppercase" id="laporan-header">PELAPORAN DESA {{ $desa->desa }}</h1>
                 <h2 class="text-3xl uppercase" id="data-header"></h2>
             </div>
             
@@ -40,9 +40,9 @@
         </div>
 
 
-        <div class="overflow-y-auto" style="max-height: 400px;">
-            <table class="min-w-full w-full mx-auto bg-white border border-gray-400 mt-1">
-                <thead class="bg-gray-100 text-black" id="table-head"></thead>
+        <div class="overflow-y-auto" style="max-height: 580px;">
+            <table class="min-w-full w-full mx-auto bg-gray-700 border-none text-white print:text-black rounded-lg mt-1">
+                <thead id="table-head"></thead>
                 <tbody id="table-body"></tbody>
             </table>
         </div>
@@ -102,11 +102,11 @@
             column = `
                 <tr>
                     @if (!$data->isEmpty())
-                        <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">NIK</th>
-                        <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">Nama Lengkap</th>
-                        <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">Nomor Telepon</th>
-                        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Tanggal Kedatangan</th>
-                        <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">Status Warga</th>
+                        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">NIK</th>
+                        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Nama Lengkap</th>
+                        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Nomor Telepon</th>
+                        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Tanggal Kedatangan</th>
+                        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Status Warga</th>
                     @endif
                 </tr>
             `;
@@ -121,11 +121,11 @@
                 @endif
                 @foreach ($data as $item)
                     <tr>
-                        <td class="px-4 py-5 text-center border-b border-gray-400">{{ $item->NIK }}</td>
-                        <td class="px-4 py-5 text-center border-b border-gray-400">{{ $item->nama_lengkap }}</td>
-                        <td class="px-4 py-5 text-center border-b border-gray-400">{{ $item->nomor_telepon }}</td>
-                        <td class="px-4 py-5 text-center border-b border-gray-400">{{ $item->updated_at->format('Y-m-d') }}</td>
-                        <td class="px-4 py-5 text-center border-b border-gray-400">
+                        <td class="px-4 py-5 text-center">{{ $item->NIK }}</td>
+                        <td class="px-4 py-5 text-center">{{ $item->nama_lengkap }}</td>
+                        <td class="px-4 py-5 text-center">{{ $item->nomor_telepon }}</td>
+                        <td class="px-4 py-5 text-center">{{ $item->updated_at->format('Y-m-d') }}</td>
+                        <td class="px-4 py-5 text-center">
                             @if ($item->status_warga)
                             <span class="px-4 py-2 bg-green-500 text-white rounded">
                             Aktif
@@ -144,12 +144,12 @@
             column = `
                 <tr>
                     @if (!$data->isEmpty())
-                        <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">NIK</th>
-                        <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">Nama Lengkap</th>
-                        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Nomor Telepon</th>
-                        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Nominal Iuran</th>
-                        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Tanggal Iuran</th>
-                        <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">Status Iuran</th>
+                        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">NIK</th>
+                        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Nama Lengkap</th>
+                        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Nomor Telepon</th>
+                        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Nominal Iuran</th>
+                        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Tanggal Iuran</th>
+                        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Status Iuran</th>
                     @endif
                 </tr>
             `;
@@ -165,12 +165,12 @@
                 @foreach ($data as $item)
                     <tr>
                         @if ($item->user)
-                            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $item->user->NIK }}</td>
-                            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $item->user->nama_lengkap }}</td>
-                            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $item->user->nomor_telepon }}</td>
-                            <td class="px-4 py-5 text-center border-b border-gray-400">{{ number_format((int)$item->nominal_iuran, 0, ',', '.') }}</td>
-                            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $item->tanggal_iuran }}</td>
-                            <td class="px-4 py-5 text-center border-b border-gray-400">
+                            <td class="px-4 py-5 text-center">{{ $item->user->NIK }}</td>
+                            <td class="px-4 py-5 text-center">{{ $item->user->nama_lengkap }}</td>
+                            <td class="px-4 py-5 text-center">{{ $item->user->nomor_telepon }}</td>
+                            <td class="px-4 py-5 text-center">{{ number_format((int)$item->nominal_iuran, 0, ',', '.') }}</td>
+                            <td class="px-4 py-5 text-center">{{ $item->tanggal_iuran }}</td>
+                            <td class="px-4 py-5 text-center">
                                 @if ($item->status_iuran)
                                 <span class="px-4 py-2 bg-green-500 text-white rounded">
                                     Lunas
@@ -190,11 +190,11 @@
             column = `
                 <tr>
                     @if (!$data->isEmpty())
-                        <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">NIK</th>
-                        <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">Nama Lengkap</th>
-                        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Nomor Telepon</th>
-                        <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold">Tanggal Iuran</th>
-                        <th class="px-4 py-4 border-b border-gray-400 text-center text-sm font-bold">Status Iuran</th>
+                        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">NIK</th>
+                        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Nama Lengkap</th>
+                        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Nomor Telepon</th>
+                        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Tanggal Iuran</th>
+                        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Status Iuran</th>
                     @endif
                 </tr>
             `;
@@ -210,11 +210,11 @@
                 @foreach ($data as $item)
                     <tr>
                         @if ($item->user)
-                            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $item->user->NIK }}</td>
-                            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $item->user->nama_lengkap }}</td>
-                            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $item->user->nomor_telepon }}</td>
-                            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $item->tanggal_iuran }}</td>
-                            <td class="px-4 py-5 text-center border-b border-gray-400">
+                            <td class="px-4 py-5 text-center">{{ $item->user->NIK }}</td>
+                            <td class="px-4 py-5 text-center">{{ $item->user->nama_lengkap }}</td>
+                            <td class="px-4 py-5 text-center">{{ $item->user->nomor_telepon }}</td>
+                            <td class="px-4 py-5 text-center">{{ $item->tanggal_iuran }}</td>
+                            <td class="px-4 py-5 text-center">
                                 @if ($item->status_iuran)
                                 <span class="px-4 py-2 bg-green-500 text-white rounded">
                                     Lunas

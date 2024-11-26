@@ -9,11 +9,51 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
         @vite('resources/css/app.css')
     </head>
-    <body class="bg-white font-poppins w-full h-full flex min-h-screen">
-        <div class="bg-gradient-to-b from-emerald-300 via-emerald-500 to-emerald-600 basis-1/2 flex justify-center items-center">
-            <img src="/assets/dashboard-illustrasi/Asset 1.png" alt="Illustrasi" class="w-1/2 h-1/2">
+    <body class="bg-gray-900 flex items-center justify-center min-h-screen">
+      <div class="w-full max-w-md bg-gray-800 shadow-lg rounded-lg p-8 space-y-4">
+        <div class="flex flex-col justify-center items-center space-y-3">
+          <img class="h-32 w-32 border-4 border-gray-900 rounded-full" src="/assets/dashboard-illustrasi/profil.jpg" alt="">
+          <h2 class="text-2xl font-bold text-gray-100 text-center mb-6">Welcome!</h2>
         </div>
-        <div class="basis-1/2 flex flex-col space-y-4 items-center justify-center">
+        <form action="/login" method="POST" class="space-y-6">
+          @csrf
+          <div>
+            <label for="NIK" class="block text-sm font-medium text-gray-300">Nomor Induk Kependudukan (NIK)</label>
+            <input 
+              type="text" 
+              id="NIK" 
+              name="NIK" 
+              required 
+              class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500 border-gray-600 bg-gray-700 text-gray-200"
+              placeholder="Ex. 517123456">
+              @error('NIK')
+                <small class="text-red-400">{{ $message }}</small>
+              @enderror
+          </div>
+          <div>
+            <label for="password" class="block text-sm font-medium text-gray-300">Kata Sandi</label>
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              required 
+              class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500 border-gray-600 bg-gray-700 text-gray-200"
+              placeholder="••••••••">
+              @error('password')
+                <small class="text-red-400">{{ $message }}</small>
+              @enderror
+          </div>
+          <button 
+            type="submit" 
+            class="w-full py-2 px-4 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+            Masuk
+          </button>
+        </form>
+        </p>
+      </div>
+    </body>
+    {{-- <body class="bg-zinc-800 font-poppins w-full h-full flex justify-center items-center align-middle min-h-screen">
+        <div class="bg-zinc-700 flex flex-col space-y-4 items-center justify-center">
             @if (session()->has('success'))
               <div class="bg-white w-full max-w-sm rounded-lg shadow-lg p-6">
                 {{ session('success') }}
@@ -22,7 +62,7 @@
 
           <div class="w-full max-w-sm space-y-8">
             <div class="flex flex-col justify-center items-center space-y-3">
-                <img class="h-32 w-32 border-4 border-emerald-400 rounded-full" src="/assets/dashboard-illustrasi/profil.jpg" alt="">
+                <img class="h-32 w-32 border-4 border-green-400 rounded-full" src="/assets/dashboard-illustrasi/profil.jpg" alt="">
                 <h2 class="text-4xl font-bold text-center text-gray-700 mb-6">WELCOME</h2>
             </div>
             <form action="/login" method="POST">
@@ -43,5 +83,5 @@
             </form>
           </div>
         </div>
-    </body>
+    </body> --}}
 </html>

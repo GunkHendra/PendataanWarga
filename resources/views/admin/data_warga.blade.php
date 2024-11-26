@@ -1,10 +1,10 @@
 @extends('layouts/layout')
 
 @section('content')
-<div id="terimaModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10 hidden">
-  <div class="bg-white p-6 rounded-lg shadow-lg">
-      <h2 class="text-xl font-semibold mb-4">Aktifkan Status Warga</h2>
-      <p>Apakah Anda yakin untuk mengaktifkan status warga ini?</p>
+<div id="terimaModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-10 hidden">
+  <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
+      <h2 class="text-xl text-white font-semibold mb-4">Aktifkan Status Warga</h2>
+      <p class="text-white">Apakah Anda yakin untuk mengaktifkan status warga ini?</p>
       <div class="mt-6 flex justify-end gap-4">
           <button id="cancelTerima" class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded">Tidak</button>
           <button id="confirmTerima" class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded">Iya</button>
@@ -13,9 +13,9 @@
 </div>
 
 <div id="batalModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10 hidden">
-  <div class="bg-white p-6 rounded-lg shadow-lg">
-      <h2 class="text-xl font-semibold mb-4">Nonaktifkan Warga</h2>
-      <p>Apakah Anda yakin untuk menonaktifkan status warga ini?</p>
+  <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
+      <h2 class="text-xl text-white font-semibold mb-4">Nonaktifkan Warga</h2>
+      <p class="text-white">Apakah Anda yakin untuk menonaktifkan status warga ini?</p>
       <div class="mt-6 flex justify-end gap-4">
           <button id="cancelBatal" class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded">Tidak</button>
           <button id="confirmBatal" class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded">Iya</button>
@@ -23,27 +23,22 @@
   </div>
 </div>
 
-<div class="p-10 bg-white rounded-lg">
+<div class="p-10 rounded-lg">
   <div class="flex items-center justify-center w-full">
     <div class="w-full max-w-lg">
-      <form action="/admin/data_warga" method="GET" class="flex items-center justify-between gap-2">
+      <form action="/admin/data_warga" method="GET" class="relative flex items-center justify-between gap-2">
         <input
           type="text"
-          class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          placeholder="Mau Cari Data Siapa?" name="search"/>
-          <img src="/assets/dashboard-icon/IconSearch.png" alt="searchIcon" class="w-10 h-10 border border-gray-300 rounded-lg">
-        <button
-          class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
-          type="submit">
-        </button>
+          class="w-full px-4 py-2 border bg-white text-black border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Mau Cari Data Siapa?" name="search"/>
+          <img src="/assets/dashboard-icon/IconSearch.png" alt="searchIcon" class="absolute right-3 top-1/2 transform -translate-y-1/2 w-10 h-full">
       </form>
     </div>
   </div>
 
   <br>
 
-  <div class="flex justify-end">
-  <a href="/admin/pendataan_warga" class="bg-emerald-400 border border-emerald-400 text-white font-bold py-2 px-4 rounded hover:bg-emerald-400 hover:text-white">
+  <div class="flex justify-end h-12">
+  <a href="/admin/pendataan_warga" class="bg-blue-600 text-white font-bold flex items-center py-2 px-4 rounded hover:bg-blue-800 transition duration-300">
     Klik Untuk Menambah Data
   </a>
   </div>
@@ -51,16 +46,16 @@
   <br>
 
   <div class="overflow-x-auto">
-    <table class="min-w-full w-full mx-auto bg-white border border-collapse border-gray-400">
-      <thead class="bg-gray-100">
+    <table class="min-w-full w-full mx-auto bg-gray-700 border-none text-white rounded-lg">
+      <thead>
         @if (!$users->isEmpty())
           <tr>
-            <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">NIK</th>
-            <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Nama Lengkap</th>
-            <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Alamat</th>
-            <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Nomor Telp</th>
-            <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Status Warga</th>
-            <th class="px-4 py-2 border-b border-gray-400 text-center text-sm font-bold text-black">Aksi</th>
+            <th class="p-4 text-center text-lg font-medium border-b border-gray-400">NIK</th>
+            <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Nama Lengkap</th>
+            <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Alamat</th>
+            <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Nomor Telp</th>
+            <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Status Warga</th>
+            <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Aksi</th>
           </tr>
         @endif
       </thead>
@@ -74,11 +69,11 @@
         @else
           @foreach ($users as $user)
           <tr>
-            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $user->NIK }}</td>
-            <td class="px-4 py-5 text-center max-w-xs break-words border-b border-gray-400">{{ $user->nama_lengkap }}</td>
-            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $user->alamat }}</td>
-            <td class="px-4 py-5 text-center border-b border-gray-400">{{ $user->nomor_telepon }}</td>
-            <td class="px-4 py-5 text-center text-white border-b border-gray-400">
+            <td class="px-4 py-5 text-center">{{ $user->NIK }}</td>
+            <td class="px-4 py-5 text-center max-w-xs break-words">{{ $user->nama_lengkap }}</td>
+            <td class="px-4 py-5 text-center">{{ $user->alamat }}</td>
+            <td class="px-4 py-5 text-center">{{ $user->nomor_telepon }}</td>
+            <td class="px-4 py-5 text-center text-white">
               @if ($user->status_warga)
               <span class="px-4 py-2 bg-green-500 text-white rounded">
                 Aktif
@@ -89,7 +84,7 @@
               </span>
               @endif
             </td>
-            <td class="py-5 text-center border-b border-gray-400">
+            <td class="py-5 text-center">
               <form class="flex justify-center" id="confirmForm-{{ $user->id }}" action="/admin/update_warga" method="POST">
                 @csrf
                 @if (!$user->status_warga)

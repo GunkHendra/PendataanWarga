@@ -18,8 +18,8 @@ Route::middleware(AdminMiddleware::class)->group(function () {
     Route::get('/admin', [AdminsController::class, 'index']);
     Route::get('/admin/pendataan_warga', [AdminsController::class, 'pendataan_warga']);
     Route::get('/admin/pendataan_iuran', [AdminsController::class, 'pendataan_iuran']);
-    Route::get('/admin/data_warga', [AdminsController::class, 'data_warga']);
-    Route::get('/admin/data_iuran', [AdminsController::class, 'data_iuran']);
+    Route::get('/admin/data_warga', [AdminsController::class, 'data_warga'])->name('data_warga');
+    Route::get('/admin/data_iuran', [AdminsController::class, 'data_iuran'])->name('data_iuran');
     Route::post('/admin/pendataan_warga', [RegisterController::class, 'store']);
     Route::post('/admin/pendataan_iuran', [RegisterController::class, 'store_iuran']);
     Route::post('/admin/update_iuran', [AdminsController::class, 'update_iuran']);
@@ -29,11 +29,12 @@ Route::middleware(AdminMiddleware::class)->group(function () {
 
 // User
 Route::middleware(UserMiddleware::class)->group(function () {
-    Route::get('/user', [UsersController::class, 'index']);
-    Route::get('/user/riwayat_iuran', [UsersController::class, 'riwayat_iuran']);
+    Route::get('/user', [UsersController::class, 'index'])->name('index_warga');
+    Route::get('/user/riwayat_iuran', [UsersController::class, 'riwayat_iuran'])->name('riwayat_iuran');
 });
 
 
+Route::get('/about', [AdminsController::class, 'about'])->middleware(AuthMiddleware::class);
 Route::post('/logout', [LoginController::class, 'logout'])->middleware(AuthMiddleware::class);
 
 // Login

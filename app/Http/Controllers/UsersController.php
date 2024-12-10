@@ -26,9 +26,18 @@ class UsersController extends Controller
     }
 
     function riwayat_iuran(){
+        $currentDay = Carbon::now()->endOfDay();
+        
+        $payment = Payment::where('user_id', Auth::user()->id)->where('tanggal_iuran', '<', $currentDay);
+
+        if (request('sort_by') && request('sort_order')){
+            $payment->orderBy(request('sort_by'), request('sort_order'));
+        }
+
+
         return view('/user/riwayat_iuran', [
             'title' => 'Riwayat Iuran',
-            'payments' => Payment::where('user_id', Auth::user()->id)->latest()->paginate(10)->withQueryString(),
+            'payments' => $payment->paginate(10)->withQueryString(),
             'desa' => Desa::first(),
             'user' => Auth::user(),
         ]);

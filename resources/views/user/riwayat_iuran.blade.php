@@ -7,8 +7,15 @@
             @if (!$payments->isEmpty())
             <tr>
                 <th class="p-4 text-center text-lg font-medium border-b border-gray-400">No</th>
-                <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Status Warga</th>
-                <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Tanggal Iuran</th>
+                {{-- <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Status Warga</th> --}}
+                <th class="p-4 text-center text-lg font-medium border-b border-gray-400">
+                    <a class="flex justify-center gap-2" href="{{ route('riwayat_iuran', array_merge(request()->query(), ['sort_by' => 'tanggal_iuran', 'sort_order' => request('sort_order', 'asc') === 'asc' ? 'desc' : 'asc'])) }}">Tanggal Iuran
+                    @if (request('sort_by') === 'tanggal_iuran')
+                        <img src="/assets/dashboard-icon/{{ request('sort_order') === 'asc' ? 'dropDown-putih.png' : 'flowUp-putih.png' }}" alt="icon">
+                    @endif
+                    </a>
+                </th>
+                {{-- <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Tanggal Iuran</th> --}}
                 <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Nominal Iuran</th>
                 <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Status Iuran</th>
             </tr>
@@ -25,17 +32,15 @@
                 @foreach ($payments as $index => $payment)
                 <tr>
                     <td class="px-4 py-5 text-center">{{ $index + 1 }}</td>
-                    <td class="px-4 py-5 text-center">
+                    {{-- <td class="px-4 py-5 text-center">
                         @if ($payment->user->status_warga)
-                        <span class="px-4 py-2 bg-green-500 text-white rounded">
-                            Aktif
+                        <span class="px-3 bg-green-500 text-white rounded-full">
                         </span>
                         @else
-                        <span class="px-4 py-2 bg-red-500 text-white rounded">
-                            Tidak Aktif
+                        <span class="px-3 bg-red-500 text-white rounded-full">
                         </span>
                         @endif
-                    </td>
+                    </td> --}}
                     <td class="px-4 py-5 text-center">{{ $payment->tanggal_iuran }}</td>
                     <td class="px-4 py-5 text-center">{{ number_format((int)$payment->nominal_iuran, 0, ',', '.') }}</td>
                     <td class="px-4 py-5 text-center">

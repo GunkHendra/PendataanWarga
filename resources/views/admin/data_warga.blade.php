@@ -50,11 +50,41 @@
       <thead>
         @if (!$users->isEmpty())
           <tr>
-            <th class="p-4 text-center text-lg font-medium border-b border-gray-400">NIK</th>
-            <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Nama Lengkap</th>
+            {{-- <th class="p-4 text-center text-lg font-medium border-b border-gray-400">NIK</th> --}}
+            <th class="p-4 text-center text-lg font-medium border-b border-gray-400"><a class="flex justify-center gap-2" href="{{ route('data_warga', array_merge(request()->query(), ['sort_by' => 'nik', 'sort_order' => request('sort_order', 'asc') === 'asc' ? 'desc' : 'asc'])) }}">NIK
+              @if (request('sort_by') === 'nik')
+                <img src="/assets/dashboard-icon/{{ request('sort_order') === 'asc' ? 'dropDown-putih.png' : 'flowUp-putih.png' }}" alt="icon">
+              @endif
+              </a>
+            </th>
+            <th class="p-4 text-center text-lg font-medium border-b border-gray-400"><a class="flex justify-center gap-2" href="{{ route('data_warga', array_merge(request()->query(), ['sort_by' => 'nama_lengkap', 'sort_order' => request('sort_order', 'asc') === 'asc' ? 'desc' : 'asc'])) }}">Nama Lengkap
+              @if (request('sort_by') === 'nama_lengkap')
+                <img src="/assets/dashboard-icon/{{ request('sort_order') === 'asc' ? 'dropDown-putih.png' : 'flowUp-putih.png' }}" alt="icon">
+              @endif
+              </a>
+            </th>
+            <th class="p-4 text-center text-lg font-medium border-b border-gray-400"><a class="flex justify-center gap-2" href="{{ route('data_warga', array_merge(request()->query(), ['sort_by' => 'alamat', 'sort_order' => request('sort_order', 'asc') === 'asc' ? 'desc' : 'asc'])) }}">Alamat
+              @if (request('sort_by') === 'alamat')
+                <img src="/assets/dashboard-icon/{{ request('sort_order') === 'asc' ? 'dropDown-putih.png' : 'flowUp-putih.png' }}" alt="icon">
+              @endif
+              </a>
+            </th>
+            <th class="p-4 text-center text-lg font-medium border-b border-gray-400"><a class="flex justify-center gap-2" href="{{ route('data_warga', array_merge(request()->query(), ['sort_by' => 'nomor_telepon', 'sort_order' => request('sort_order', 'asc') === 'asc' ? 'desc' : 'asc'])) }}">Nomor Telepon
+              @if (request('sort_by') === 'nomor_telepon')
+                <img src="/assets/dashboard-icon/{{ request('sort_order') === 'asc' ? 'dropDown-putih.png' : 'flowUp-putih.png' }}" alt="icon">
+              @endif
+              </a>
+            </th>
+            <th class="p-4 text-center text-lg font-medium border-b border-gray-400"><a class="flex justify-center gap-2" href="{{ route('data_warga', array_merge(request()->query(), ['sort_by' => 'status_warga', 'sort_order' => request('sort_order', 'asc') === 'asc' ? 'desc' : 'asc'])) }}">Status Warga
+              @if (request('sort_by') === 'status_warga')
+                <img src="/assets/dashboard-icon/{{ request('sort_order') === 'asc' ? 'dropDown-putih.png' : 'flowUp-putih.png' }}" alt="icon">
+              @endif
+              </a>
+            </th>
+            {{-- <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Nama Lengkap</th>
             <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Alamat</th>
             <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Nomor Telp</th>
-            <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Status Warga</th>
+            <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Status Warga</th> --}}
             <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Aksi</th>
           </tr>
         @endif
@@ -75,12 +105,12 @@
             <td class="px-4 py-5 text-center">{{ $user->nomor_telepon }}</td>
             <td class="px-4 py-5 text-center text-white">
               @if ($user->status_warga)
-              <span class="px-4 py-2 bg-green-500 text-white rounded">
-                Aktif
+              <span class="px-3 bg-green-500 text-white rounded-full">
+                {{-- Aktif --}}
               </span>
               @else
-              <span class="px-4 py-2 bg-red-500 text-white rounded">
-                Tidak Aktif
+              <span class="px-3 bg-red-500 text-white rounded-full">
+                {{-- Tidak Aktif --}}
               </span>
               @endif
             </td>
@@ -88,11 +118,11 @@
               <form class="flex justify-center" id="confirmForm-{{ $user->id }}" action="/admin/update_warga" method="POST">
                 @csrf
                 @if (!$user->status_warga)
-                <button class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700" onclick="konfirmasi(event, '{{ $user->id }}', 1)">
+                <button class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-800 transition duration-200" onclick="konfirmasi(event, '{{ $user->id }}', 1)">
                   Aktifkan
                 </button>
                 @else
-                <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700" onclick="konfirmasi(event, '{{ $user->id }}', 0)">
+                <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-800 transition duration-200" onclick="konfirmasi(event, '{{ $user->id }}', 0)">
                   Nonaktifkan
                 </button>
                 @endif

@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'NIK' => '5103020212001110',
-            'nama_lengkap' => 'I Putu Bagus Kevin Anderson',
+            'nama_lengkap' => 'Alexander Sepiteng',
             'alamat' => 'Jl. Sunset Road No. 76',
             'tanggal_lahir' => "2000-12-02",
             'tempat_lahir' => "Badung",
@@ -57,11 +57,42 @@ class DatabaseSeeder extends Seeder
             'status_warga' => '1',
             'remember_token' => NULL,
         ]);
+        User::create([
+            'NIK' => '5103020212001111',
+            'nama_lengkap' => 'John Knalpot',
+            'alamat' => 'Jl. Sunset Road No. 77',
+            'tanggal_lahir' => "2000-11-02",
+            'tempat_lahir' => "Badung",
+            'status_menikah' => "0",
+            'nomor_telepon' => "081338321124",
+            'pendidikan' => "Sarjana/D4",
+            'jenis_pekerjaan' => "Wirausaha",
+            'agama' => "Hindu",
+            'is_admin' => '0',
+            'password' => '12345',
+            'status_warga' => '1',
+            'remember_token' => NULL,
+        ]);
+        User::create([
+            'NIK' => '5103020212001112',
+            'nama_lengkap' => 'Jack Stang Bengkok',
+            'alamat' => 'Jl. Sunset Road No. 78',
+            'tanggal_lahir' => "2000-10-02",
+            'tempat_lahir' => "Badung",
+            'status_menikah' => "0",
+            'nomor_telepon' => "081338321125",
+            'pendidikan' => "Sarjana/D4",
+            'jenis_pekerjaan' => "Wirausaha",
+            'agama' => "Hindu",
+            'is_admin' => '0',
+            'password' => '12345',
+            'status_warga' => '1',
+            'remember_token' => NULL,
+        ]);
 
         $validated_iuran = [
             'NIK' => "5103020212001110",
             'tanggal_iuran' => "2024-06-15",
-            'nominal_iuran' => "1000000",
         ];
         
         $inputDate = Carbon::parse($validated_iuran['tanggal_iuran']);
@@ -75,7 +106,17 @@ class DatabaseSeeder extends Seeder
             Payment::create([
                 'user_id' => "2",
                 'tanggal_iuran' => $paymentDate,
-                'nominal_iuran' => $validated_iuran['nominal_iuran'],
+                'nominal_iuran' => "1000000",
+            ]);
+            Payment::create([
+                'user_id' => "3",
+                'tanggal_iuran' => $paymentDate,
+                'nominal_iuran' => "750000",
+            ]);
+            Payment::create([
+                'user_id' => "4",
+                'tanggal_iuran' => $paymentDate,
+                'nominal_iuran' => "500000",
             ]);
         }
 

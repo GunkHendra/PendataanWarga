@@ -62,7 +62,16 @@ class AdminsController extends Controller
     // }
 
     function data_iuran(){
-        $payment = Payment::with(['user'])->where('isActive', '1')->orderBy('tanggal_iuran', 'desc');
+        $payment = Payment::with(['user'])->where('isActive', '1');
+
+        if (request('sort_by') && request('sort_order')){
+            if (request('sort_by') == 'nik' || request('sort_by') == 'status_warga' || request('sort_by') == 'nama_lengkap'){
+                $payment->join('users', 'users.id', '=', 'payments.user_id')
+                        ->orderBy(request('sort_by'), request('sort_order'));
+            } else {
+                $payment->orderBy(request('sort_by'), request('sort_order'));
+            }
+        }
     
         if (request('search')){
             $payment->whereHas('user', function ($query) {
@@ -81,7 +90,11 @@ class AdminsController extends Controller
     }
 
     function data_warga(){
-        $user = User::where('is_admin', '0')->orderBy('NIK', 'asc');
+        $user = User::where('is_admin', '0');
+
+        if (request('sort_by') && request('sort_order')){
+            $user->orderBy(request('sort_by'), request('sort_order'));
+        }
 
         if (request('search')){
             $user->where(function ($query) {
@@ -223,6 +236,13 @@ class AdminsController extends Controller
         //     'total_warga_lunas' => Payment::where('status_iuran', '1')->whereBetween('tanggal_iuran', [$startOfMonth, $endOfMonth])->count(),
         //     'total_warga_belum' => Payment::where('status_iuran', '0')->whereBetween('tanggal_iuran', [$startOfMonth, $endOfMonth])->count(),
         // ]);
+    }
+
+    public function about(){
+        return view('admin/about', [
+            'title' => 'Tentang Kami',
+            'user' => Auth::user(),
+        ]);
     }
 
     // public function data_tabel_pelaporan(Request $request)

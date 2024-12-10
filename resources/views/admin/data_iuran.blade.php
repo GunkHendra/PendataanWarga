@@ -50,13 +50,42 @@
     <thead>
       @if (!$payments->isEmpty())
       <tr>
-        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">NIK</th>
-        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Nama Lengkap</th>
-        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Status Warga</th>
-        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Tanggal Iuran</th>
-        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Nominal Iuran</th>
-        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Status Iuran</th>
-        <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Aksi</th>
+        <th class="p-4 text-center text-lg font-medium border-b border-gray-400"><a class="flex justify-center gap-2" href="{{ route('data_iuran', array_merge(request()->query(), ['sort_by' => 'status_warga', 'sort_order' => request('sort_order', 'asc') === 'asc' ? 'desc' : 'asc'])) }}">Status Warga
+          @if (request('sort_by') === 'status_warga')
+            <img src="/assets/dashboard-icon/{{ request('sort_order') === 'asc' ? 'dropDown-putih.png' : 'flowUp-putih.png' }}" alt="icon">
+          @endif
+          </a>
+        </th>
+        <th class="p-4 text-center text-lg font-medium border-b border-gray-400"><a class="flex justify-center gap-2" href="{{ route('data_iuran', array_merge(request()->query(), ['sort_by' => 'nik', 'sort_order' => request('sort_order', 'asc') === 'asc' ? 'desc' : 'asc'])) }}">NIK
+          @if (request('sort_by') === 'nik')
+            <img src="/assets/dashboard-icon/{{ request('sort_order') === 'asc' ? 'dropDown-putih.png' : 'flowUp-putih.png' }}" alt="icon">
+          @endif
+          </a>
+        </th>
+        <th class="p-4 text-center text-lg font-medium border-b border-gray-400"><a class="flex justify-center gap-2" href="{{ route('data_iuran', array_merge(request()->query(), ['sort_by' => 'nama_lengkap', 'sort_order' => request('sort_order', 'asc') === 'asc' ? 'desc' : 'asc'])) }}">Nama Lengkap
+          @if (request('sort_by') === 'nama_lengkap')
+            <img src="/assets/dashboard-icon/{{ request('sort_order') === 'asc' ? 'dropDown-putih.png' : 'flowUp-putih.png' }}" alt="icon">
+          @endif
+          </a>
+        </th>
+        <th class="p-4 text-center text-lg font-medium border-b border-gray-400"><a class="flex justify-center gap-2" href="{{ route('data_iuran', array_merge(request()->query(), ['sort_by' => 'tanggal_iuran', 'sort_order' => request('sort_order', 'asc') === 'asc' ? 'desc' : 'asc'])) }}">Tanggal Iuran
+          @if (request('sort_by') === 'tanggal_iuran')
+            <img src="/assets/dashboard-icon/{{ request('sort_order') === 'asc' ? 'dropDown-putih.png' : 'flowUp-putih.png' }}" alt="icon">
+          @endif
+          </a>
+        </th>
+        <th class="p-4 text-center text-lg font-medium border-b border-gray-400"><a class="flex justify-center gap-2" href="{{ route('data_iuran', array_merge(request()->query(), ['sort_by' => 'nominal_iuran', 'sort_order' => request('sort_order', 'asc') === 'asc' ? 'desc' : 'asc'])) }}">Nominal Iuran
+          @if (request('sort_by') === 'nominal_iuran')
+            <img src="/assets/dashboard-icon/{{ request('sort_order') === 'asc' ? 'dropDown-putih.png' : 'flowUp-putih.png' }}" alt="icon">
+          @endif
+          </a>
+        </th>
+        <th class="p-4 text-center text-lg font-medium border-b border-gray-400"><a class="flex justify-center gap-2" href="{{ route('data_iuran', array_merge(request()->query(), ['sort_by' => 'status_iuran', 'sort_order' => request('sort_order', 'asc') === 'asc' ? 'desc' : 'asc'])) }}">Status Iuran
+          @if (request('sort_by') === 'status_iuran')
+            <img src="/assets/dashboard-icon/{{ request('sort_order') === 'asc' ? 'dropDown-putih.png' : 'flowUp-putih.png' }}" alt="icon">
+          @endif
+          </a>
+        </th>
       </tr>
       @endif
     </thead>
@@ -70,23 +99,23 @@
       @else
         @foreach ($payments as $payment)
           <tr>
-            <td class="px-4 py-5 text-center">{{ $payment->user->NIK }}</td>
-            <td class="px-4 py-5 text-center">{{ $payment->user->nama_lengkap }}</td>
             <td class="px-4 py-5 text-center">
               {{-- {{ dd($payment->user->status_warga) }} --}}
               @if ($payment->user->status_warga)
-              <span class="px-4 py-2 bg-green-500 text-white rounded">
-                Aktif
+              <span class="px-3 bg-green-500 text-white rounded-full">
+                {{-- Aktif --}}
               </span>
               @else
-              <span class="px-4 py-2 bg-red-500 text-white rounded">
-                Tidak Aktif
+              <span class="px-3 bg-red-500 text-white rounded-full">
+                {{-- Tidak Aktif --}}
               </span>
               @endif
             </td>
+            <td class="px-4 py-5 text-center">{{ $payment->user->NIK }}</td>
+            <td class="px-4 py-5 text-center">{{ $payment->user->nama_lengkap }}</td>
             <td class="px-4 py-5 text-center">{{ $payment->tanggal_iuran }}</td>
             <td class="px-4 py-5 text-center">{{ number_format((int)$payment->nominal_iuran, 0, ',', '.') }}</td>
-            <td class="px-4 py-5 text-center">
+            {{-- <td class="px-4 py-5 text-center">
               @if ($payment->status_iuran)
                 <span class="px-4 py-2 bg-green-500 text-white rounded">
                   Lunas
@@ -96,24 +125,24 @@
                   Belum Lunas
                 </span>
               @endif
-              <td class="px-4 py-5 text-center">
-                <form id="confirmForm-{{ $payment->id }}" action="/admin/update_iuran" method="POST">
-                  @csrf
-                  @if (!$payment->status_iuran)
-                  <button class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700" onclick="konfirmasi(event, '{{ $payment->id }}', 1)">
-                    Terima
-                  </button>
-                  @else
-                  <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700" onclick="konfirmasi(event, '{{ $payment->id }}', 0)">
-                    Batal
-                  </button>
-                  @endif
-                  <input type="hidden" name="id" id="id-{{ $payment->id }}">
-                  <input type="hidden" name="status_iuran" id="status-{{ $payment->id }}">
-                  <input type="hidden" name="status_warga" value="{{ $payment->user->status_warga }}"">
-                  <input type="hidden" name="page" id="current-page" value="{{ request('page', 1) }}">
-                </form>
-              </td>
+            </td> --}}
+            <td class="px-4 py-5 text-center">
+              <form id="confirmForm-{{ $payment->id }}" action="/admin/update_iuran" method="POST">
+                @csrf
+                @if (!$payment->status_iuran)
+                <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-green-500 transition duration-200" onclick="konfirmasi(event, '{{ $payment->id }}', 1)">
+                  Belum Lunas
+                </button>
+                @else
+                <button class="px-4 py-2 bg-green-500 text-white rounded hover:bg-red-500 transition duration-200" onclick="konfirmasi(event, '{{ $payment->id }}', 0)">
+                  Lunas
+                </button>
+                @endif
+                <input type="hidden" name="id" id="id-{{ $payment->id }}">
+                <input type="hidden" name="status_iuran" id="status-{{ $payment->id }}">
+                <input type="hidden" name="status_warga" value="{{ $payment->user->status_warga }}"">
+                <input type="hidden" name="page" id="current-page" value="{{ request('page', 1) }}">
+              </form>
             </td>
           </tr>
         @endforeach

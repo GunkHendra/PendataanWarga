@@ -17,7 +17,7 @@ return new class extends Migration
                 table: 'users', indexName: 'payments_users_id'
             );
             $table->date('tanggal_iuran');
-            $table->string('nominal_iuran');
+            $table->integer('nominal_iuran');
             $table->boolean('status_iuran')->default(false);
             $table->boolean('isActive')->default(true);
             $table->timestamps();

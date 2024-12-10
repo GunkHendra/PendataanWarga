@@ -2,6 +2,11 @@
 
 @section('content')
     <div class="m-6 p-10 bg-gray-700 rounded-lg">
+        @if (session()->has('success'))
+            <div class="bg-blue-400 text-white font-bold text-xl w-full rounded-lg shadow-lg p-6 mb-6">
+                {{ session('success') }}
+            </div>
+        @endif
         <form action="/admin/pendataan_warga" method="POST">
             @csrf
             <div class="mb-6">

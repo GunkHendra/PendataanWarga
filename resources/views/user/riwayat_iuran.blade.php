@@ -15,9 +15,23 @@
                     @endif
                     </a>
                 </th>
+                <th class="p-4 text-center text-lg font-medium border-b border-gray-400">
+                    <a class="flex justify-center gap-2" href="{{ route('riwayat_iuran', array_merge(request()->query(), ['sort_by' => 'nominal_iuran', 'sort_order' => request('sort_order', 'asc') === 'asc' ? 'desc' : 'asc'])) }}">Nominal Iuran
+                    @if (request('sort_by') === 'nominal_iuran')
+                        <img src="/assets/dashboard-icon/{{ request('sort_order') === 'asc' ? 'dropDown-putih.png' : 'flowUp-putih.png' }}" alt="icon">
+                    @endif
+                    </a>
+                </th>
+                <th class="p-4 text-center text-lg font-medium border-b border-gray-400">
+                    <a class="flex justify-center gap-2" href="{{ route('riwayat_iuran', array_merge(request()->query(), ['sort_by' => 'status_iuran', 'sort_order' => request('sort_order', 'asc') === 'asc' ? 'desc' : 'asc'])) }}">Status Iuran
+                    @if (request('sort_by') === 'status_iuran')
+                        <img src="/assets/dashboard-icon/{{ request('sort_order') === 'asc' ? 'dropDown-putih.png' : 'flowUp-putih.png' }}" alt="icon">
+                    @endif
+                    </a>
+                </th>
                 {{-- <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Tanggal Iuran</th> --}}
-                <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Nominal Iuran</th>
-                <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Status Iuran</th>
+                {{-- <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Nominal Iuran</th>
+                <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Status Iuran</th> --}}
             </tr>
             @endif
         </thead>

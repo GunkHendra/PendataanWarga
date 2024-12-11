@@ -34,7 +34,6 @@
                 </div>
             </div>
 
-
             <div class="grid grid-cols-3 gap-4">
                 <div class="mb-6">
                     <label for="tanggal_lahir" class="text-white">Tanggal Lahir</label><br>

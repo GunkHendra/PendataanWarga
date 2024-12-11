@@ -61,34 +61,6 @@ class AdminsController extends Controller
     //     ]);
     // }
 
-    function data_iuran(){
-        $payment = Payment::with(['user'])->where('isActive', '1');
-
-        if (request('sort_by') && request('sort_order')){
-            if (request('sort_by') == 'nik' || request('sort_by') == 'status_warga' || request('sort_by') == 'nama_lengkap'){
-                $payment->join('users', 'users.id', '=', 'payments.user_id')
-                        ->orderBy(request('sort_by'), request('sort_order'));
-            } else {
-                $payment->orderBy(request('sort_by'), request('sort_order'));
-            }
-        }
-    
-        if (request('search')){
-            $payment->whereHas('user', function ($query) {
-                $query->where('NIK', 'like', '%' . request('search') . '%')
-                      ->orWhere('nama_lengkap', 'like', '%' . request('search') . '%');
-            });
-        }
-
-        return view('/admin/data_iuran', [
-            'title' => 'Data Iuran Warga',
-            'payments' => $payment->paginate(7)->withQueryString(),
-            'users' => User::all(),
-            'admin' => Auth::user(),
-            'desa' => Desa::first(),
-        ]);
-    }
-
     function data_warga(){
         $user = User::where('is_admin', '0');
 
@@ -99,8 +71,14 @@ class AdminsController extends Controller
         if (request('search')){
             $user->where(function ($query) {
                 $query->where('nama_lengkap', 'like', '%' . request('search') . '%')
-                      ->orWhere('NIK', 'like', '%' . request('search') . '%');
+                      ->orWhere('NIK', 'like', '%' . request('search') . '%')
+                      ->orWhere('nomor_telepon', 'like', '%' . request('search') . '%')
+                      ->orWhere('alamat', 'like', '%' . request('search') . '%');
             })->where('is_admin', '0');
+
+            if (request('sort_by') && request('sort_order')){
+                $user->orderBy(request('sort_by'), request('sort_order'));
+            }
         }
 
         return view('/admin/data_warga', [
@@ -109,23 +87,6 @@ class AdminsController extends Controller
             'admin' => Auth::user(),
             'desa' => Desa::first(),
         ]);
-    }
-
-    public function update_iuran(Request $request){
-        $validated = $request->validate([
-            'id' => ['required'],
-            'status_iuran' => ['required'],
-            'status_warga' => ['required'],
-        ]);
-        
-        if ($validated['status_warga']){
-            Payment::where('id', $validated['id'])->update(['status_iuran' => $validated['status_iuran']]);
-        } else{
-            Payment::where('id', $validated['id'])->update(['status_iuran' => $validated['status_iuran'], 'isActive' => '0']);
-        }
-        // return redirect('/admin/data_iuran')->with('success', 'Update data berhasil!');
-        $page = $request->get('page', 1);
-        return redirect('/admin/data_iuran?page=' . $page)->with('success', 'Status iuran berhasil diperbarui!');
     }
 
     public function update_warga(Request $request){
@@ -143,7 +104,66 @@ class AdminsController extends Controller
             Payment::where('user_id', $validated['id'])->where('isActive', '0')->where('status_iuran', '0')->where('tanggal_iuran', '>=', $currentMonthStart)->update(['isActive' => '1']);
         }
 
-        return redirect('/admin/data_warga')->with('success', 'Update data berhasil!');
+        $page = $request->get('page', 1);
+        $search = $request->get('search', '');
+        $sort_by = $request->get('sort_by', '');
+        $sort_order = $request->get('sort_order', '');
+        return redirect('/admin/data_warga?page=' . $page . '&search=' . $search . '&sort_by=' . $sort_by . '&sort_order=' . $sort_order)->with('success', 'Update data berhasil!');
+    }
+
+    function data_iuran(){
+        $payment = Payment::with(['user'])->where('isActive', '1');
+
+        if (request('sort_by') && request('sort_order')){
+            // if (request('sort_by') == 'nik' || request('sort_by') == 'status_warga' || request('sort_by') == 'nama_lengkap'){
+                $payment->join('users', 'users.id', '=', 'payments.user_id')
+                        ->select('payments.*', 'users.nama_lengkap', 'users.NIK', 'users.nama_lengkap', 'users.status_warga')
+                        ->orderBy(request('sort_by'), request('sort_order'));
+            // } else {
+                // $payment->orderBy(request('sort_by'), request('sort_order'));
+            // }
+        }
+    
+        if (request('search')){
+            $payment->whereHas('user', function ($query) {
+                $query->where('NIK', 'like', '%' . request('search') . '%')
+                      ->orWhere('nama_lengkap', 'like', '%' . request('search') . '%')
+                      ->orWhere('tanggal_iuran', 'like', '%' . request('search') . '%')
+                      ->orWhere('nominal_iuran', 'like', '%' . request('search') . '%');
+            });
+            if (request('sort_by') && request('sort_order')){
+                $payment->orderBy(request('sort_by'), request('sort_order'));
+            }
+        }
+
+        return view('/admin/data_iuran', [
+            'title' => 'Data Iuran Warga',
+            'payments' => $payment->paginate(7)->withQueryString(),
+            'users' => User::all(),
+            'admin' => Auth::user(),
+            'desa' => Desa::first(),
+        ]);
+    }
+
+    public function update_iuran(Request $request){
+        $validated = $request->validate([
+            'id' => ['required'],
+            'status_iuran' => ['required'],
+            'status_warga' => ['required'],
+        ]);
+
+        if ($validated['status_warga']){
+            Payment::where('id', $validated['id'])->update(['status_iuran' => $validated['status_iuran']]);
+        } else{
+            Payment::where('id', $validated['id'])->update(['status_iuran' => $validated['status_iuran'], 'isActive' => '0']);
+        }
+
+        // return redirect('/admin/data_iuran')->with('success', 'Update data berhasil!');
+        $page = $request->get('page', 1);
+        $search = $request->get('search', '');
+        $sort_by = $request->get('sort_by', '');
+        $sort_order = $request->get('sort_order', '');
+        return redirect('/admin/data_iuran?page=' . $page . '&search=' . $search . '&sort_by=' . $sort_by . '&sort_order=' . $sort_order)->with('success', 'Status iuran berhasil diperbarui!');
     }
 
     public function wargaPendatangChart()

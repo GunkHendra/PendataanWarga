@@ -34,7 +34,6 @@ class UsersController extends Controller
             $payment->orderBy(request('sort_by'), request('sort_order'));
         }
 
-
         return view('/user/riwayat_iuran', [
             'title' => 'Riwayat Iuran',
             'payments' => $payment->paginate(10)->withQueryString(),

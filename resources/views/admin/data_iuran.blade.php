@@ -30,6 +30,8 @@
         <input
           type="text"
           class="w-full px-4 py-2 border bg-white text-black border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Cari Data Iuran Siapa?" name="search"/>
+          <input type="hidden" name="sort_by" value="{{ request('sort_by') }}">
+          <input type="hidden" name="sort_order" value="{{ request('sort_order') }}">
           <img src="/assets/dashboard-icon/IconSearch.png" alt="searchIcon" class="absolute right-3 top-1/2 transform -translate-y-1/2 w-10 h-full">
       </form>
     </div>
@@ -138,9 +140,12 @@
                   Lunas
                 </button>
                 @endif
-                <input type="hidden" name="id" id="id-{{ $payment->id }}">
+                <input type="hidden" name="id" id="id-{{ $payment->id }}" value="{{ $payment->id }}">
                 <input type="hidden" name="status_iuran" id="status-{{ $payment->id }}">
-                <input type="hidden" name="status_warga" value="{{ $payment->user->status_warga }}"">
+                <input type="hidden" name="status_warga" value="{{ $payment->user->status_warga }}">
+                <input type="hidden" name="search" value="{{ request('search') }}">
+                <input type="hidden" name="sort_by" value="{{ request('sort_by') }}">
+                <input type="hidden" name="sort_order" value="{{ request('sort_order') }}">
                 <input type="hidden" name="page" id="current-page" value="{{ request('page', 1) }}">
               </form>
             </td>
@@ -172,13 +177,13 @@
   }
 
   document.getElementById('confirmTerima').addEventListener('click', function(){
-    document.getElementById('id-' + id).value = id;
+    // document.getElementById('id-' + id).value = id;
     document.getElementById('status-' + id).value = status;
     document.getElementById('confirmForm-' + id).submit();
   });
 
   document.getElementById('confirmBatal').addEventListener('click', function(){
-    document.getElementById('id-' + id).value = id;
+    // document.getElementById('id-' + id).value = id;
     document.getElementById('status-' + id).value = status;
     document.getElementById('confirmForm-' + id).submit();
   });

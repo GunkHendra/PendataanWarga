@@ -30,6 +30,8 @@
         <input
           type="text"
           class="w-full px-4 py-2 border bg-white text-black border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Mau Cari Data Siapa?" name="search"/>
+          <input type="hidden" name="sort_by" value="{{ request('sort_by') }}">
+          <input type="hidden" name="sort_order" value="{{ request('sort_order') }}">
           <img src="/assets/dashboard-icon/IconSearch.png" alt="searchIcon" class="absolute right-3 top-1/2 transform -translate-y-1/2 w-10 h-full">
       </form>
     </div>
@@ -128,6 +130,10 @@
                 @endif
                 <input type="hidden" name="id" id="id-{{ $user->id }}">
                 <input type="hidden" name="status_warga" id="status-{{ $user->id }}">
+                <input type="hidden" name="search" value="{{ request('search') }}">
+                <input type="hidden" name="sort_by" value="{{ request('sort_by') }}">
+                <input type="hidden" name="sort_order" value="{{ request('sort_order') }}">
+                <input type="hidden" name="page" id="current-page" value="{{ request('page', 1) }}">
               </form>
             </td>
           </tr>

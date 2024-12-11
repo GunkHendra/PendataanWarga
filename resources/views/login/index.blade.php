@@ -13,7 +13,7 @@
       <div class="w-full max-w-md bg-gray-800 shadow-lg rounded-lg p-8 space-y-4">
         <div class="flex flex-col justify-center items-center space-y-3">
           <img class="h-32 w-32 border-4 border-gray-900 rounded-full" src="/assets/dashboard-illustrasi/profil.jpg" alt="">
-          <h2 class="text-2xl font-bold text-gray-100 text-center mb-6">Welcome 123!</h2>
+          <h2 class="text-2xl font-bold text-gray-100 text-center mb-6">Welcome!</h2>
         </div>
         <form action="/login" method="POST" class="space-y-6">
           @csrf

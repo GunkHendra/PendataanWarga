@@ -60,7 +60,7 @@
                     <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Nominal Iuran</th>
                     <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Tanggal Iuran</th>
                     <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Status Iuran</th>
-                    <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Status Warga</th>
+                    {{-- <th class="p-4 text-center text-lg font-medium border-b border-gray-400">Status Warga</th> --}}
                 </tr>
                 @endif
             </thead>
@@ -97,8 +97,8 @@
                                 @endif
                             </div>
                         </td>
-                        <td class="px-4 py-3 text-center">
-                            {{-- @if ($payment[0]->user->status_warga) --}}
+                        {{-- @if ($payment[0]->user->status_warga) --}}
+                        {{-- <td class="px-4 py-3 text-center">
                             @if ($payment->user->status_warga)
                             <span class="px-4 py-2 bg-green-500 text-white rounded">
                                 Aktif
@@ -108,7 +108,7 @@
                                 Tidak Aktif
                             </span>
                             @endif
-                        </td>
+                        </td> --}}
                     </tr>
                     @php
                         $counter++;

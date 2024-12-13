@@ -116,7 +116,7 @@
               </span>
               @endif
             </td>
-            <td class="py-5 text-center">
+            <td class="py-5 text-center flex items-center space-x-4 justify-center">
               <form class="flex justify-center" id="confirmForm-{{ $user->id }}" action="/admin/update_warga" method="POST">
                 @csrf
                 @if (!$user->status_warga)
@@ -134,6 +134,10 @@
                 <input type="hidden" name="sort_by" value="{{ request('sort_by') }}">
                 <input type="hidden" name="sort_order" value="{{ request('sort_order') }}">
                 <input type="hidden" name="page" id="current-page" value="{{ request('page', 1) }}">
+              </form>
+              <form action="/admin/edit_warga" method="GET">
+                <input type="hidden" name="id" value="{{ $user->id }}">
+                <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-800 transition duration-200">Edit</button>
               </form>
             </td>
           </tr>

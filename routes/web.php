@@ -25,6 +25,8 @@ Route::middleware(AdminMiddleware::class)->group(function () {
     Route::post('/admin/update_iuran', [AdminsController::class, 'update_iuran']);
     Route::post('/admin/update_warga', [AdminsController::class, 'update_warga']);
     Route::get('/admin/pelaporan', [AdminsController::class, 'pelaporan']);
+    Route::get('/admin/edit_warga', [AdminsController::class, 'edit_warga']);
+    Route::post('/admin/edit_data_warga', [AdminsController::class, 'edit_data_warga']);
 });
 
 // User

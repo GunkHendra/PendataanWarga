@@ -15,7 +15,7 @@
                 <label for="Status">Nomor Induk Kependudukan</label><br>
                 <div class="relative">
                     <select name="NIK" id="NIK" class="w-full bg-gray-200 rounded p-2 appearance-none" required>
-                        <option disabled selected class="text-">Pilih Nomor Induk Kependudukan</option>
+                    <option disabled selected class="text-">Pilih Nomor Induk Kependudukan</option>
                         @foreach ($users as $user)
                             <option value="{{ $user->NIK }}">{{ $user->NIK }}</option>
                         @endforeach

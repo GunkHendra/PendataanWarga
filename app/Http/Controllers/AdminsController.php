@@ -111,6 +111,77 @@ class AdminsController extends Controller
         return redirect('/admin/data_warga?page=' . $page . '&search=' . $search . '&sort_by=' . $sort_by . '&sort_order=' . $sort_order)->with('success', 'Update data berhasil!');
     }
 
+    public function edit_warga(Request $request){
+        $validated = $request->validate([
+            'id' => ['required'],
+        ]);
+        $user = User::where('id', $validated['id']);
+        $payment = Payment::where('user_id', $validated['id']);
+
+        return view('/admin/edit', [
+            'title' => 'Edit Data Warga',
+            'user' => $user->get(),
+            'payment' => $payment->latest()->get(),
+            'admin' => Auth::user(),    
+            'desa' => Desa::first(),
+        ]);
+    }
+
+    public function edit_data_warga(Request $request){
+        $validated_person = $request->validate([
+            'NIK' => ['required'],
+            'nama_lengkap' => ['required'],
+            'alamat' => ['required'],
+            'tanggal_lahir' => ['required'],
+            'tempat_lahir' => ['required'],
+            'status_menikah' => ['required'],
+            'nomor_telepon' => ['required'],
+            'pendidikan' => ['required'],
+            'jenis_pekerjaan' => ['required'],
+            'agama' => ['required'],
+        ]);
+
+        $user = User::where('NIK', $validated_person['NIK'])->first();
+        if ($user) {
+            $user->update($validated_person);
+        }
+
+        $validated_iuran = $request->validate([
+            'NIK' => ['required'],
+            'tanggal_iuran' => ['required', 'date'],
+            'nominal_iuran' => ['required'],
+        ]);
+        $validated_iuran['nominal_iuran'] = str_replace('.', '', $request->nominal_iuran);
+
+        $inputDate = Carbon::parse($validated_iuran['tanggal_iuran']);
+        $currentYear = $inputDate->year;
+        $currentMonth = $inputDate->month;
+        $monthsRemaining = 12 - $currentMonth + 1;
+
+        $existingPayments = Payment::where('user_id', $user->id)
+            ->where('status_iuran', '0')
+            ->where('tanggal_iuran', '>=', Carbon::now()->startOfMonth())
+            ->get();
+
+        foreach ($existingPayments as $payment) {
+            $payment->update(['nominal_iuran' => $validated_iuran['nominal_iuran']]);
+        }
+
+        // $startMonth = $existingPayments->isEmpty() ? $currentMonth : $currentMonth + $existingPayments->count();
+
+        // for ($i = $startMonth; $i <= 12; $i++) {
+        //     $paymentDate = Carbon::create($currentYear, $i, 1);
+
+        //     Payment::create([
+        //     'user_id' => $user->id,
+        //     'NIK' => $validated_iuran['NIK'],
+        //     'tanggal_iuran' => $paymentDate,
+        //     'nominal_iuran' => $validated_iuran['nominal_iuran'],
+        //     ]);
+        // }
+        return redirect('/admin/data_warga')->with('success', 'Edit Data Berhasil!');
+    }
+
     function data_iuran(){
         $payment = Payment::with(['user'])->where('isActive', '1');
 

@@ -32,6 +32,8 @@ class UsersController extends Controller
 
         if (request('sort_by') && request('sort_order')){
             $payment->orderBy(request('sort_by'), request('sort_order'));
+        } else{
+            $payment->orderBy('tanggal_iuran', 'desc');
         }
 
         return view('/user/riwayat_iuran', [
